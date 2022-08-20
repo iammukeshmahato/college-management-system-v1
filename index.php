@@ -23,14 +23,18 @@
   <div class="container">
     <div class="login-box">
       <div class="logo">
-        <div class="errorText">
+        <div class="errorText <?php if (isset($_SESSION['msg'])) {
+              echo "showErrorText";
+              // session_unset();
+            }?>">
           <?php
             if (isset($_SESSION['msg'])) {
               echo $_SESSION['msg'];
               session_unset();
-            } else {
-              echo "Please Login to continue!!!";
             }
+            //  else {
+            //   echo "Please Login to continue!!!";
+            // }
           ?>
         </div>
         <img src="./img/avatar.svg" width="80 px" height="80px" />
@@ -40,13 +44,13 @@
         <form method="post" action="login.php" id="login-form">
           <div class="user-box">
             <img src="./img/person.png" id="user">
-            <input type="text" name="Username" required class="username" />
+            <input type="text" name="Username" required class="username" value="admin@nbpi.com"/>
             <label>Username</label>
           </div>
 
           <div class="user-box">
             <img src="./img/lock.png" id="pwd">
-            <input type="password" name="Password" required class="password" id="password" />
+            <input type="password" name="Password" required class="password" id="password" value="verify@admin"/>
             <label>Password</label>
             <img src="./img/hide.png" id="ShowHideToggle">
           </div>

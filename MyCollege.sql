@@ -32,14 +32,14 @@ CREATE TABLE `Admin_list` (
   `fullname` varchar(100) NOT NULL,
   `username` varchar(100) NOT NULL,
   `password` varchar(100) NOT NULL,
-  `image_id` varchar(255) NOT NULL
+  `img_id` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `Admin_list`
 --
 
-INSERT INTO `Admin_list` (`id`, `fullname`, `username`, `password`, `image_id`) VALUES
+INSERT INTO `Admin_list` (`id`, `fullname`, `username`, `password`, `img_id`) VALUES
 (1, 'Mukesh Mahato', 'admin@nbpi.com', 'verify@admin', 'Mukesh.jpeg'),
 (2, 'Sanjeev Pandit', 'mesanjeev_admin@nbpi.com', 'mesanjeev@nbpi.com', 'let it be blank');
 

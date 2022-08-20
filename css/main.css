@@ -1,0 +1,281 @@
+:root{
+   --sidebarWidth: 205px;
+}
+* {
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+   /* color: rgb(232, 232, 232); */
+}
+
+body {
+   margin: 0;
+   padding: 0;
+   /* height: 100vh;
+   width: 100vw; */
+   overflow: hidden;
+   background-color: #206182;
+}
+
+.container {
+   margin: 20px;
+   height: calc(100vh - 40px);
+   width: calc(100vw - 40px);
+   display: flex;
+   /* border: 4px solid red; */
+   border-radius: 0.5rem;
+   overflow: hidden;
+   /* overflow-y: scroll; */
+}
+
+.leftsection {
+   /* height: 93.8vh; */
+   height: 100%;
+   width: var(--sidebarWidth);
+   min-width: 202px;
+   max-width: 260px;
+   background-color: #064869;
+   /* padding: 0.5rem; */
+}
+
+.logo {
+   margin-top: 0.5rem;
+   /* border: 1px solid red; */
+   text-align: center;
+   display: none;
+}
+
+.logo img {
+   /* padding: 2px 0; */
+   /* margin: 14px; */
+   /* text-align: center; */
+   height: 45px;
+   /* width: calc(100% - 2rem); */
+   /* object-fit: contain; */
+   background-color: #ffffff;
+}
+
+.icon {
+   text-align: center;
+   margin-top: 30px;
+   padding: 0.5rem;
+   /* border: 1px solid red; */
+   /* margin: 02.5rem; */
+}
+.leftsection .icon .admin-name {
+   text-align: center;
+   font-size: 1.5rem;
+   color: rgb(232, 232, 232);
+   margin: 0.5rem 0;
+}
+.leftsection .icon #avtar {
+   height: 120px;
+   width: 120px;
+   object-fit: cover;
+   border: 2px dashed rgb(130, 130, 130);
+   padding: 0.25rem;
+   border-radius: 50%;
+}
+
+.leftsection .icon .user-type {
+   color: #eceafa;
+   color: rgb(183, 183, 183);
+   text-transform: uppercase;
+   font-size: 0.75rem;
+}
+
+.content {
+   /* height: 448px; */
+   margin-top: 30px;
+   color: aliceblue;
+   /* border: 1px solid red; */
+   padding: 0 0.5rem;
+}
+
+.content a {
+   text-decoration: none;
+   color: black;
+   display: flex;
+   align-items: center;
+   padding: 0.5rem;
+   font-size: 21px;
+   color: rgb(232, 232, 232);
+   margin: 2px 0;
+   /* border: 1px solid red; */
+   transition: 0.25s;
+}
+
+.content a img {
+   margin: 0;
+   width: 1.5rem;
+   margin-right: 0.6rem;
+   margin-left: 0.6rem;
+   text-align: center;
+   filter: invert(100%);
+}
+
+.content a:hover {
+   background-color: #199be0;
+   border-radius: 8px;
+}
+
+.active {
+   background-color: #58c5ff;
+   background-color: #199be0;
+   border-radius: 8px;
+}
+
+.content a p1 {
+   font-family: "Poppins", sans-serif;
+   padding-top: 6px;
+}
+
+.main {
+   height: 100%;
+   width: calc(100% - var(--sidebarWidth));
+   /* width: 82%; */
+   background-color: rgb(233, 233, 233);
+   padding: 1rem;
+   /* padding-top: 0; */
+   /* margin-left: 260px; */
+}
+
+.main .title-bar {
+   height: 3rem;
+   width: calc(100% + 2rem);
+   /* border: 1px solid red; */
+   margin-bottom: 1rem;
+   margin-left: -1rem;
+   margin-top: -1rem;
+   padding-left: 1rem;
+   display: flex;
+   align-items: center;
+   background-color: #ffffff;
+   /* box-shadow: 0px 0px 4px 4px rgb(223, 223, 223); */
+   /* justify-content: center; */
+}
+
+.main-title {
+   padding-left: 3rem;
+   font-size: 1.25rem;
+   font-weight: 400;
+   /* color: red; */
+   background: url(../img/bars-solid.svg) no-repeat;
+}
+
+.main .slider {
+   height: 400px;
+   /* margin: 18px; */
+   /* margin-top: 20px; */
+   background-color: white;
+   background-image: url(../img/administration.png);
+   background-size: cover;
+   background-position: center;
+   background-repeat: no-repeat;
+   /* animation-name: myani; */
+   animation-duration: 12s;
+   animation-timing-function: linear;
+   animation-iteration-count: infinite;
+   /* box-shadow: 1px 4px 7px 4px #3c3838; */
+}
+
+@keyframes myani {
+   0% {
+      background-img: url(./img/administration.png);
+   }
+   35% {
+      background-img: url(./img/building.jpg);
+   }
+   75% {
+      background-img: url(./img/board.jpg);
+   }
+   /* 250%{background-img: url(./img/book.jpg);}
+    50%{background-img: url(./img/college\ student.jpg);}
+    100%{background-img: url(./img/people\ libraru.jpg);} */
+}
+
+.main .card-sec {
+   margin-top: 4rem;
+   /* border: 4px solid red; */
+   /* margin: 50px; */
+   /* margin-left: -80px; */
+   /* padding: 2rem; */
+   display: flex;
+   justify-content: space-around;
+}
+
+.card {
+   width: 250px;
+   height: 150px;
+   box-shadow: 0 4px 15px -4px rgb(121, 121, 121);
+   border-radius: 5px;
+   border-top: 4px solid rgb(255, 0, 0);
+   padding: 1rem 2rem;
+   position: relative;
+   /* background-color: #17a2b7; */
+   /* color: #e6e6e6; */
+   color: #fff;
+}
+
+.card::before {
+   content: "";
+   width: 100px;
+   height: 100px;
+   position: absolute;
+   /* right: 1rem; */
+   right: 0;
+   top: 25%;
+   /* background-image: url("../img/stats.png"); */
+   background-image: url("../img/student-with-graduation-cap.png");
+   background-size: 100px;
+   background-repeat: no-repeat;
+   background-position: right;
+   filter: opacity(0.2);
+}
+
+.card h1 {
+   font-size: 4rem;
+}
+
+.card h3 {
+   margin-top: 1rem;
+}
+.student-card {
+   background-color: #17a2b7;
+}
+
+.teacher-card {
+   /* border-color: #17a2b7; */
+   background-color: #dc3546;
+}
+
+.teacher-card::before{
+   right: 4px;
+   background-image: url("../img/teacher-at-the-blackboard.png");
+}
+
+.admin-card {
+   background-color: #fec107;
+   color: #ffffff;
+}
+
+.admin-card::before{
+   top: 30%;
+   background-image: url("../img/setting.png");
+}
+
+.course-card {
+   background-color: #27a844;
+}
+
+.course-card::before{
+   right: 4px;
+   background-image: url("../img/department.png");
+}
+
+.main .hr {
+   margin: 0 1rem;
+   margin-top: 2.5rem;
+   height: 4px;
+   background-color: red;
+}

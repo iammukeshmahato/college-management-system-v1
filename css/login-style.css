@@ -14,6 +14,7 @@ body {
 
 .first {
    height: 800px;
+   height: 100vh;
    width: 656px;
    position: relative;
    left: 0;
@@ -170,6 +171,11 @@ body {
    border-radius: 8px 0;
    background: #ffc8c8;
    width: 94%;
+   display: none;
+}
+
+.showErrorText{
+   display: block;
 }
 
 @media (max-width: 1050px) {
