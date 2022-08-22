@@ -191,3 +191,7 @@ cursor: pointer;
 .searchpannel{
    position: relative;
 }
+
+.center{
+   text-align: center;
+}

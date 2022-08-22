@@ -3,8 +3,8 @@ let PhoneErrorMsg = document.querySelector(".errorMsg");
 let DOBErrorMsg = document.querySelector("#DOBErrorMsg");
 // let dob = document.querySelector("#dob");
 
-phone.addEventListener("blur", (e) => {
-    console.log("Blur event fired");
+phone.addEventListener("input", (e) => {
+    // console.log("Blur event fired");
     const regex = /^9[678]{1}[0-9]{8}$/;
     if (regex.test(phone.value)) {
         phone.classList.remove("invalid");

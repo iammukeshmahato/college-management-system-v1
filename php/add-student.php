@@ -347,7 +347,7 @@ include "header.php"
         });
     </script> -->
 
-    <!-- <script src="<?php echo URL ?>js/validate.js"></script> -->
+    <script src="<?php echo URL ?>js/validate.js"></script>
     <script src="<?php echo URL ?>js/alertBox.js"></script>
 </body>
 

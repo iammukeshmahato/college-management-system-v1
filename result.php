@@ -125,8 +125,8 @@ if ($userInput == "") {
                                 ?>
                             </td>
                             <td><?php echo $data['phone'] ?></td>
-                            <td><?php echo $data['dob'] ?></td>
-                            <td><?php echo $data['batch_name'] ?></td>
+                            <td class="center"><?php echo $data['dob'] ?></td>
+                            <td class="center"><?php echo $data['batch_name'] ?></td>
                             <td>
                                 <span class="button">
                                     <form action="<?php echo URL ?>php/edit-student.php" method="post">
