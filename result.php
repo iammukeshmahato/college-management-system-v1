@@ -102,7 +102,7 @@ if ($userInput == "") {
                     FROM students 
                     INNER JOIN faculty  ON students.faculty_id = faculty.faculty_id left join batch on students.yoj = batch.batch_id
                     -- where std_id = 100
-                    WHERE std_id = '$userInput' OR std_name like '%$userInput%' OR parents_name like '%$userInput%' OR phone like '%$userInput%' OR dob = '$userInput'
+                    WHERE std = '$userInput' OR std_name like '%$userInput%' OR parents_name like '%$userInput%' OR phone like '%$userInput%' OR dob = '$userInput'
                     -- WHERE  std_name = '%$userInput%' OR parents_name = '%$userInput%' OR phone = '%$userInput%' OR dob = '$userInput'
                     ";
 
@@ -114,11 +114,11 @@ if ($userInput == "") {
                 ?>
                         <tr>
                             <td><?php echo $i++ ?></td>
-                            <td><?php echo $data['std_id'] ?></td>
+                            <td><?php echo $data['std'] ?></td>
                             <td><?php echo $data['std_name'] ?></td>
                             <td><?php echo $data['address'] ?></td>
-                            <td class="center"><?php echo $data['gender'] ?></td>
-                            <td class="center"><?php echo $data['faculty_short'] ?></td>
+                            <td><?php echo $data['gender'] ?></td>
+                            <td><?php echo $data['faculty_short'] ?></td>
                             <td>
                                 <?php
                                 echo $data['parents_name']
@@ -160,7 +160,4 @@ if ($userInput == "") {
         </div>
     </div>
 </div>
-<script>
-    document.title =`Showing results for "<?php echo $userInput ?>"`;
-</script>
 <script src="<?php echo URL ?>js/alertBox.js"></script>

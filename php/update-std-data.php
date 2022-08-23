@@ -30,7 +30,7 @@ $sql = "UPDATE students SET
     `phone` = '$phone',
     `dob` = '$dob',
     `yoj` = $yoj
-    WHERE std_id = '$update_id'";
+    WHERE std_id = $update_id";
 $res = mysqli_query($conn, $sql);
 
 

@@ -44,13 +44,13 @@
         <form method="post" action="login.php" id="login-form">
           <div class="user-box">
             <img src="./img/person.png" id="user">
-            <input type="text" name="Username" required class="username"/>
+            <input type="text" name="Username" required class="username" value="admin@nbpi.com"/>
             <label>Username</label>
           </div>
 
           <div class="user-box">
             <img src="./img/lock.png" id="pwd">
-            <input type="password" name="Password" required class="password" id="password"/>
+            <input type="password" name="Password" required class="password" id="password" value="verify@admin"/>
             <label>Password</label>
             <img src="./img/hide.png" id="ShowHideToggle">
           </div>

@@ -122,11 +122,11 @@ if (!isset($_POST['submitBtn']) && ($_SESSION['isDeleted'] != "yes") && $_SESSIO
                             <tr>
                                 <td><?php echo $i++ ?></td>
                                 <!-- <td>DIT-2079-0120</td> -->
-                                <td><?php echo $data['std_id'] ?></td>
+                                <td><?php echo $data['std'] ?></td>
                                 <td><?php echo $data['std_name'] ?></td>
                                 <td><?php echo $data['address'] ?></td>
-                                <td class="center"><?php echo $data['gender'] ?></td>
-                                <td class="center"><?php echo $data['faculty_short'] ?></td>
+                                <td><?php echo $data['gender'] ?></td>
+                                <td><?php echo $data['faculty_short'] ?></td>
                                 <td>
                                     <?php
                                     echo $data['parents_name']
@@ -171,7 +171,4 @@ if (!isset($_POST['submitBtn']) && ($_SESSION['isDeleted'] != "yes") && $_SESSIO
 <?php
 }
 ?>
-<script>
-    document.title = document.querySelector(".ShowingResultTitle").innerText;
-</script>
 <script src="<?php echo URL ?>js/alertBox.js"></script>

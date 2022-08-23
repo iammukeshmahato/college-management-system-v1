@@ -12,7 +12,7 @@ echo $id;
 
 echo "this is me mukesh mahato";
 
-$sql = "DELETE FROM students WHERE std_id = '$id'";
+$sql = "DELETE FROM students WHERE std_id = $id";
 $res = mysqli_query($conn, $sql);
 echo "line 14";
 if($res){
