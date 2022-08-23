@@ -9,11 +9,11 @@ if(!isset($_POST['edit'])){
 
 $edit_id = $_POST['edit_id'];
 
-$sql = "SELECT * FROM students WHERE std_id = $edit_id";
+$sql = "SELECT * FROM students WHERE std_id = '$edit_id'";
 $res = mysqli_query($conn, $sql);
 $fetched_data = mysqli_fetch_assoc($res);
 
-// var_dump($fetched_data);
+var_dump($fetched_data);
 
 ?>
 
@@ -219,7 +219,7 @@ $fetched_data = mysqli_fetch_assoc($res);
                         <!-- Submit and Reset Button -->
                         <div class="form-item two-column">
                             <!-- <input type="reset" value="Reset" class="input col-1"> -->
-                            <input type="submit" value="Update" name="updateBtn" class="input">
+                            <input type="submit" value="Update" name="updateBtn" id="updateBtn" class="input">
                         </div>
 
                         <!-- <div class="form-item">

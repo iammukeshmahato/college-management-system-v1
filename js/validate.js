@@ -1,6 +1,14 @@
 let phone = document.querySelector("#phone");
 let PhoneErrorMsg = document.querySelector(".errorMsg");
 let DOBErrorMsg = document.querySelector("#DOBErrorMsg");
+let btn = document.querySelector("#submitBtn");
+
+let allInput = document.querySelectorAll("input[type=text]");
+
+if(btn == null){
+    btn = document.querySelector("#updateBtn");
+}
+// let updateBtn = document.querySelector("#updateBtn")
 // let dob = document.querySelector("#dob");
 
 phone.addEventListener("input", (e) => {
@@ -9,10 +17,13 @@ phone.addEventListener("input", (e) => {
     if (regex.test(phone.value)) {
         phone.classList.remove("invalid");
         PhoneErrorMsg.style.display = "none";
+        btn.removeAttribute("disabled");
+        // updateBtn.removeAttribute("disabled");
     } else {
         phone.classList.add("invalid");
         PhoneErrorMsg.style.display = "block";
-
+        btn.setAttribute("disabled" ,"");
+        // updateBtn.setAttribute("disabled" ,"");
     }
 
 })
@@ -32,3 +43,18 @@ phone.addEventListener("input", (e) => {
 
 //     }
 // })
+
+allInput.forEach(elem => {
+    // console.log(elem);
+    let regEx = /<script>/;
+    elem.addEventListener("input", ()=>{
+        // console.log(elem.value);
+        if(regEx.test(elem.value)){
+            elem.classList.add("invalid");
+            btn.setAttribute("disabled" ,"");
+        }else{
+            elem.classList.remove("invalid");
+            btn.removeAttribute("disabled");
+        }
+    })
+})

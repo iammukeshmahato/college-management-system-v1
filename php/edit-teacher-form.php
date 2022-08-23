@@ -139,7 +139,7 @@ include "./header.php";
 
                         <div class="form-item">
                             <!-- <input type="reset" value="Reset" class="input col-1"> -->
-                            <input type="submit" value="Update" name="updateBtn" class="input">
+                            <input type="submit" value="Update" name="updateBtn" id="updateBtn" class="input">
                         </div>
                     </form>
 

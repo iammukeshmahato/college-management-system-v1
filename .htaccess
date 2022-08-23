@@ -1,0 +1,2 @@
+#prevent to move into the folder which doesn't contain 'index' file.
+Options -Indexes

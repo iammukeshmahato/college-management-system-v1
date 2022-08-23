@@ -227,3 +227,7 @@ input[type="reset"]:hover {
    border-color: red;
 }
 
+input:disabled{
+   background-color: #357fef;
+   cursor: not-allowed;
+}

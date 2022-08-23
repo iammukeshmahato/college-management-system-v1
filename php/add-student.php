@@ -237,7 +237,7 @@ include "header.php"
                         <!-- Submit and Reset Button -->
                         <div class="form-item two-column">
                             <input type="reset" value="Reset" class="input col-1">
-                            <input type="submit" value="Submit" name="submitBtn" class="input col-2">
+                            <input type="submit" value="Submit" name="submitBtn" id="submitBtn" class="input col-2">
                         </div>
 
                         <!-- <div class="form-item">

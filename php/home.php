@@ -2,6 +2,7 @@
 include "header.php";
 // echo "mukhes";
 // echo "url = ". $_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'];
+// echo "dhankumari = ". md5("dhankumari")
 ?>
 
 <!DOCTYPE html>
