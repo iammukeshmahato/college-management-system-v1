@@ -67,18 +67,18 @@ include "./header.php";
 
             <div class="alertBox <?php if ($_SESSION['isDeleted'] == "yes") echo "deleted" ?>" <?php if ((isset($_SESSION['isDeleted']) && ($_SESSION['isDeleted'] == "yes")) || $_SESSION['isUpdated'] == "yes") {
                                                                                                     echo 'style="display:flex"';
-                                                                                                    // $_SESSION['isDeleted'] = "no";
-                                                                                                    // $_SESSION['isUpdated'] = "no";
                                                                                                 } ?>>
                 <strong>
                     <?php
                     if ($_SESSION['isDeleted'] == "yes") {
                         echo "Teacher Deleted Successfully!!!";
                         $_SESSION['isDeleted'] = "no";
+                        unset($_SESSION['isDeleted']);
                     }
                     if ($_SESSION['isUpdated'] == "yes") {
                         echo "Teacher Updated Successfully!!!";
                         $_SESSION['isUpdated'] = "no";
+                        unset($_SESSION['isUpdated']);
                     }
                     ?>
                 </strong>
@@ -86,6 +86,7 @@ include "./header.php";
             </div>
 
             <div class="ShowingResultTitle" style="display: <?php if(($_POST['searchText']=="") || $_POST['searchText']==" ") echo "none;" ?>">
+                <a href="<?php echo URL ?>php/view-teacher.php"><button class="backBtn"></button></a>
                 Showing results for "<?php echo $_POST['searchText']?>".
             </div>
 
@@ -94,7 +95,7 @@ include "./header.php";
                 <div class="searchBox">
                     <!-- <div class="sort">
                         <label for="sortBy">Sort By</label>
-                        <select name="sortBy" id="sortBy">
+                        <select name="sortBy" id="sortBy" class="input">
                             <option value="name">Name Asc</option>
                             <option value="name">Name Desc</option>
                             <option value="name">Recently Added</option>
@@ -121,11 +122,13 @@ include "./header.php";
                     <?php
                     if (isset($_POST['searchBtn'])) {
                         $searchText = $_POST['searchText'];
-                        $sql = "SELECT * FROM teachers WHERE t_name like '%$searchText%' ORDER BY t_name ASC";
+                        $sql = "SELECT * FROM teachers WHERE t_name like '%$searchText%'";
+                        // $sql = "SELECT * FROM teachers WHERE t_name like '%$searchText%' ORDER BY t_name ASC";
                         $_POST['searchText']=" ";
                         $res = mysqli_query($conn, $sql);
                     } else {
-                        $sql = "SELECT * FROM teachers ORDER BY t_name ASC";
+                        $sql = "SELECT * FROM teachers";
+                        // $sql = "SELECT * FROM teachers ORDER BY t_name ASC";
                         $res = mysqli_query($conn, $sql);
                     }
                     if (mysqli_num_rows($res) > 0) {
@@ -164,6 +167,7 @@ include "./header.php";
                         </tr>
                     <?php }
                     ?>
+                    <!--  -->
                     <!-- <tr>
                         <td>1</td>
                         <td>sanjeev kumar pandit</td>
@@ -190,22 +194,6 @@ include "./header.php";
                 </table>
             </div>
         </div>
-
-        <script>
-            // console.log("Mukesh Mahato");
-            // let myForm = document.querySelector("#SearchForm");
-            // let searchBtn = document.querySelector(".searchBtn");
-            // let searchText = document.querySelector("#searchBox");
-            // console.log(myForm);
-
-            // myForm.addEventListener("submit", (e) => {
-            //     e.preventDefault();
-            // })
-
-            // searchBtn.addEventListener("click", ()=>{
-            //     console.log(searchText.value);
-            // })
-        </script>
 
         <script src="<?php echo URL ?>js/alertBox.js"></script>
 </body>

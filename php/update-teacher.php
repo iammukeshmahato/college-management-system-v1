@@ -31,8 +31,6 @@
     `t_qualification` = '$qualification'
     WHERE t_id = $update_id";
 
-    // print_r($updateTeacherSQL);
-
     echo "line before sql";
     $updateTeacherRES = mysqli_query($conn, $updateTeacherSQL);
     echo "line after sql";

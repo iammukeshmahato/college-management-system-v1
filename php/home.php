@@ -1,7 +1,5 @@
 <?php
 include "header.php";
-// echo "mukhes";
-// echo "url = ". $_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'];
 ?>
 
 <!DOCTYPE html>
@@ -83,7 +81,6 @@ include "header.php";
                         $res = mysqli_query($conn, "select t_id from teachers");
                         $count = mysqli_num_rows($res);
                         echo $count;
-                        // echo "0";
                         ?>
                     </h1>
                     <h3>Total Teacher</h3>
@@ -101,50 +98,8 @@ include "header.php";
             <div class="hr"></div>
         </div>
 
-
     </div>
 
-
-    <!-- <script>
-        let a = document.querySelectorAll("a");
-        // console.log(a[0].href);
-        a.forEach(elem => {
-            elem.addEventListener("click", () => {
-                if (elem.classList.contains("active")) {
-                    elem.classList.remove("active");
-                } else {
-                    elem.classList.add("active");
-                }
-            });
-        });
-
-        function loadContent() {
-
-            let mainContainer = document.querySelector(".main");
-            console.log(mainContainer);
-            let title = `<div class="title-bar">
-                        <h1 class="main-title">College Management System | Edit Profile</h1>
-                    </div>`;
-
-            let xhr = new XMLHttpRequest();
-            xhr.open("GET", "../editprofile.php");
-            xhr.onload = () => {
-                mainContainer.innerHTML = title + xhr.responseText;
-            }
-            xhr.send();
-            // mainContainer.innerHTML = 
-        }
-
-    </script> -->
-
-    <script>
-        // let titleBar = document.querySelector(".title-bar");
-        // console.log(titleBar);
-        // titleBar.addEventListener("click", () => {
-        //     console.log("clicked");
-        //     document.querySelector(".leftsection").style.display = "none";
-        // })
-    </script>
 </body>
 
 </html>

@@ -4,24 +4,13 @@
     padding: 0;
 }
 
-/* img{
-    
-    height:30px;
-    padding-left: 270px;
-    padding-top: 0px;    
-    
-} */
-
 h2{
     text-align: center;
 }
 
 .search-wrapper{
-    /* text-align: center; */
     height: 100vh;
     width: 100%;
-    /* background-color:rgb(245, 239, 239); */
-    /* background-color: gray; */
 }
 
 .individual-student-search-section{
@@ -30,9 +19,6 @@ h2{
     padding: 1rem;
     background-color: snow;
     box-shadow: 0 0 8px 2px rgba(0, 0, 0, 0.5);
-    /* border: 1px solid red; */
-    /* background-color: rgb(214, 211, 211); */
-    /* box-shadow: 0px 0px 4px 2px red; */
 }
 
 .searchpannel{
@@ -46,39 +32,6 @@ h2{
     /* height: 33px; */
    /* background-color: antiquewhite; */
 }
-
-/* .searchByFaculty input{
-    height: 28px;
-    color: #444;
-    padding: 8px;
-    outline: none;
-    border-radius: 5px;
-    border: 1px solid orange;
-    
-}
-
-.button{
-    padding-left: 10px;
-    text-align: center;
- } */
-
-/* .button a{
-    text-decoration: none;
-    color: #444;
-    background: #fff;
-    border: 1px solid orange;
-    display: inline-block;
-    padding: 5px 15px;  
-    font-weight: bold;
-    border-radius: 5px;
-    transition: 0.3s ease-in-out;
- }
-
- .button a:hover{
-    box-shadow: 0 3px 8px #0003;
-    background-color: bisque;
-
- } */
 
  .searchByFaculty p{
     text-align: center;
@@ -107,10 +60,6 @@ h2{
  .searchByFaculty{
     margin-top: 1rem;
     padding: 1.5rem;
-    /* background-color: aquamarine; */
-
-    /* background-color: snow; */
-    /* box-shadow: 0 0 8px 2px rgba(0, 0, 0, 0.5); */
  }
 
  .department, .yearofjoining{

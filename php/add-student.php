@@ -12,59 +12,11 @@ include "header.php"
     <title>Add Student</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- <link rel="stylesheet" href="./css/mystyle.css">
-    <link rel="stylesheet" href="./css/add-student-style.css">
-    <link rel="stylesheet" href="./css/alertBox.css"> -->
-
 </head>
 
 <body>
     <div class="container">
-        <!-- <div class="leftsection">
-
-            <div class="logo"><img src="./img/logo.png"></div>
-
-            <div class="icon">
-                <img src="./pp/<?php echo $_SESSION['logged_user_pp'] ?>" id="avtar">
-                <p class="admin-name"><?php echo $_SESSION['logged_user_name'] ?></p>
-                <p class="user-type">Admin</p>
-            </div>
-
-            <div class="content">
-                <a href="./home.php">
-                    <img src="./img/home_FILL0_wght400_GRAD0_opsz48.png" id="home">
-                    <p1>Home</p1>
-                </a>
-                <a href="./add-teacher.php">
-                    <img src="./img/person_add_FILL0_wght400_GRAD0_opsz48.png " id="teacher">
-                    <p1>Add teacher</p1>
-                </a>
-                <a href="./add-student.php" class="active">
-                    <img src="./img/person_add_FILL0_wght400_GRAD0_opsz48.png " id="student">
-                    <p1>Add student</p1>
-                </a>
-                <a href="./view-teacher.php">
-                    <img src="./img/pageview_FILL0_wght400_GRAD0_opsz48.png" id="viewteacher">
-                    <p1>View teacher</p1>
-                </a>
-                <a href="./view-student.php">
-                    <img src="./img/pageview_FILL0_wght400_GRAD0_opsz48.png" id="viewstudent">
-                    <p1>View student</p1>
-                </a>
-                <a href="./setting.php">
-                    <img src="./img/logout_FILL0_wght400_GRAD0_opsz48.png" id="logout">
-                    <p1>Setting</p1>
-                </a>
-                <a href="./logout.php">
-                    <img src="./img/logout_FILL0_wght400_GRAD0_opsz48.png" id="logout">
-                    <p1>Logout</p1>
-                </a>
-            </div>
-
-        </div> -->
-
         <div class="leftsection">
-
             <div class="logo"><img src="<?php echo URL ?>img/logo.png"></div>
 
             <div class="icon">
@@ -157,21 +109,6 @@ include "header.php"
                             <!-- <label for="fullname" class="errorMsg">Full Name</label> -->
                         </div>
 
-                        <!-- Faculty -->
-                        <!-- <div class="form-item">
-                            <p class="title">Faculty</p>
-                            <select name="std_faculty" id="" class="input" required>
-                                <option>Select Faculty</option>
-                                <?php
-                                // $res = mysqli_query($conn, "Select * from faculty");
-                                // while ($data = mysqli_fetch_assoc($res)) {
-                                //     // $data = mysqli_fetch_assoc($res);
-                                //     echo '<option value="' . $data['faculty_id'] . '">' . $data['faculty_name'] . '</option>';
-                                // }
-                                ?>
-                            </select>
-                        </div> -->
-
                         <!-- Contact Email & Phone -->
                         <div class="form-item">
                             <div class="contact two-column">
@@ -237,54 +174,8 @@ include "header.php"
                         <!-- Submit and Reset Button -->
                         <div class="form-item two-column">
                             <input type="reset" value="Reset" class="input col-1">
-                            <input type="submit" value="Submit" name="submitBtn" class="input col-2">
+                            <input type="submit" value="Submit" name="submitBtn" id="submitBtn" class="input col-2">
                         </div>
-
-                        <!-- <div class="form-item">
-                            <p class="title">Permanent Address</p>
-
-                            <div class="Address two-column">
-                                <div style="width: calc(calc(100% - 1rem)/2);">
-                                    <select name="" id="" class="input">
-                                        <option value="">Select Province</option>
-                                        <option value="">Province 1</option>
-                                        <option value="">Province 2</option>
-                                        <option value="">Province 3</option>
-                                        <option value="">Province 4</option>
-                                        <option value="">Province 5</option>
-                                        <option value="">Province 6</option>
-                                        <option value="">Province 7</option>
-                                    </select>
-                                    <label for="fullname" class="errorMsg">Province</label>
-                                </div>
-                                <div style="width: calc(calc(100% - 1rem)/2);">
-                                    <input type="text" class="input add-input" id="fullname" required>
-                                    <label for="fullname" class="errorMsg">District</label>
-                                </div>
-
-                            </div>
-                            <div class="Address two-column" style="margin-top: 1rem;">
-                                <div style="width: calc(calc(100% - 1.5rem)/3);">
-                                    <input type="text" class="input add-input" id="fullname" required>
-                                    <label for="fullname" class="errorMsg">Municiplicity</label>
-                                </div>
-                                <div style="width: calc(calc(100% - 1.5rem)/3);">
-                                    <input type="text" class="input add-input" id="fullname" required>
-                                    <label for="fullname" class="errorMsg">Ward</label>
-                                </div>
-                                <div style="width: calc(calc(100% - 1.5rem)/3);">
-                                    <input type="text" class="input add-input" id="fullname" required>
-                                    <label for="fullname" class="errorMsg">Tole</label>
-                                </div>
-                            </div>
-
-                        </div> -->
-
-                        <!-- <div class="form-item">
-                            <p class="title">Name of Father/Mother</p>
-                            <input type="text" class="input" id="fullname" required placeholder="Enter your father's or mother's name">
-                            <label for="fullname" class="errorMsg">Full Name</label>
-                        </div> -->
 
                     </form>
                 </div>
@@ -292,60 +183,6 @@ include "header.php"
 
         </div>
     </div>
-
-
-    <!-- <script>
-        let phone = document.querySelector("#phone");
-        let PhoneErrorMsg = document.querySelector(".errorMsg");
-        let DOBErrorMsg = document.querySelector("#DOBErrorMsg");
-        let dob = document.querySelector("#dob");
-
-        phone.addEventListener("blur", (e) => {
-            console.log("Blur event fired");
-            const regex = /^9[678]{1}[0-9]{8}$/;
-            if (regex.test(phone.value)) {
-                phone.classList.remove("invalid");
-                PhoneErrorMsg.style.display = "none";
-            } else {
-                phone.classList.add("invalid");
-                PhoneErrorMsg.style.display = "block";
-
-            }
-
-        })
-
-        dob.addEventListener("blur", () => {
-            let currentDate = new Date();
-            let selectedDOB = new Date(dob.value);
-            let diff_in_sec = (currentDate.getTime() - selectedDOB.getTime()) / 1000;
-            let year = (diff_in_sec / 86400) / 365;
-
-            if (year >= 14) {
-                dob.classList.remove("invalid");
-                DOBErrorMsg.style.display = "none";
-            } else {
-                dob.classList.add("invalid");
-                DOBErrorMsg.style.display = "block";
-
-            }
-        })
-    </script> -->
-    <!-- 
-    <script>
-        let alertBox = document.querySelector(".alertBox");
-        let closeBtn = document.querySelector(".btn-close");
-
-        // console.log(closeBtn);
-
-        // setTimeout(() => {
-        //     alertBox.style.display = "none";
-
-        // }, 5000);
-
-        closeBtn.addEventListener("click", () => {
-            alertBox.style.display = "none";
-        });
-    </script> -->
 
     <script src="<?php echo URL ?>js/validate.js"></script>
     <script src="<?php echo URL ?>js/alertBox.js"></script>

@@ -89,12 +89,9 @@ include "./header.php";
                     <!-- fetching teacher's data -->
                     <?php
                     $edit_id = $_POST['edit_id'];
-                    // echo "delete id = " .$delete_id;
                     $sql = "SELECT * FROM teachers WHERE t_id = $edit_id";
                     $res = mysqli_query($conn, $sql);
-                    // echo mysqli_num_rows($res);
                     $data = mysqli_fetch_assoc($res);
-                    // print_r($data);
                     ?>
 
                     <form action="update-teacher.php" method="post">
@@ -139,7 +136,7 @@ include "./header.php";
 
                         <div class="form-item">
                             <!-- <input type="reset" value="Reset" class="input col-1"> -->
-                            <input type="submit" value="Update" name="updateBtn" class="input">
+                            <input type="submit" value="Update" name="updateBtn" id="updateBtn" class="input">
                         </div>
                     </form>
 

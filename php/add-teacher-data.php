@@ -1,11 +1,8 @@
 <?php
 include("./header.php");
-    // print_r($_POST);
     if(!isset($_POST['submitBtn'])){
         header("location:" . URL . "php/add-teacher.php");
     }else{
-        // print_r($_POST);
-
         $name = $_POST['fullname'];
         $address = $_POST['address'];
         $gender = $_POST['gender'];

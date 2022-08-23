@@ -1,19 +1,15 @@
 <?php
-session_start();
 include "header.php";
 
-// print_r($_POST);
-if(!isset($_POST['edit'])){
-    header("location: ". URL . "php/view-student.php");
+if (!isset($_POST['edit'])) {
+    header("location: " . URL . "php/view-student.php");
 }
 
 $edit_id = $_POST['edit_id'];
 
-$sql = "SELECT * FROM students WHERE std_id = $edit_id";
+$sql = "SELECT * FROM students WHERE std_id = '$edit_id'";
 $res = mysqli_query($conn, $sql);
 $fetched_data = mysqli_fetch_assoc($res);
-
-// var_dump($fetched_data);
 
 ?>
 
@@ -120,9 +116,9 @@ $fetched_data = mysqli_fetch_assoc($res);
                         <!-- Gender -->
                         <div class="form-item">
                             <p class="title">Gender</p>
-                            <input type="radio" name="std_gender" value="Male" class="radio" required <?php if($fetched_data['gender']=="Male") echo "checked"?>><span>Male</span>
-                            <input type="radio" name="std_gender" value="Female" class="radio" required <?php if($fetched_data['gender']=="Female") echo "checked"?>><span>Female</span>
-                            <input type="radio" name="std_gender" value="Other" class="radio" required <?php if($fetched_data['gender']=="Other") echo "checked"?>><span>Other</span>
+                            <input type="radio" name="std_gender" value="Male" class="radio" required <?php if ($fetched_data['gender'] == "Male") echo "checked" ?>><span>Male</span>
+                            <input type="radio" name="std_gender" value="Female" class="radio" required <?php if ($fetched_data['gender'] == "Female") echo "checked" ?>><span>Female</span>
+                            <input type="radio" name="std_gender" value="Other" class="radio" required <?php if ($fetched_data['gender'] == "Other") echo "checked" ?>><span>Other</span>
                         </div>
 
                         <div class="form-item">
@@ -131,29 +127,9 @@ $fetched_data = mysqli_fetch_assoc($res);
                             <!-- <label for="fullname" class="errorMsg">Full Name</label> -->
                         </div>
 
-                        <!-- Faculty -->
-                        <!-- <div class="form-item">
-                            <p class="title">Faculty</p>
-                            <select name="std_faculty" id="" class="input" required>
-                                <option>Select Faculty</option>
-                                <?php
-                                $res = mysqli_query($conn, "Select * from faculty");
-                                while ($data = mysqli_fetch_assoc($res)) {
-                                    // $data = mysqli_fetch_assoc($res);
-                                    echo '<option value="' . $data['faculty_id'] . '">' . $data['faculty_name'] . '</option>';
-                                }
-                                ?>
-                            </select>
-                        </div> -->
-
                         <!-- Contact Email & Phone -->
                         <div class="form-item">
                             <div class="contact two-column">
-                                <!-- <div class="email col-1">
-                                    <p class="title">Email</p>
-                                    <input type="email" class="input" name="std_email" required placeholder="example@gmail.com" autocomplete="off">
-                                    <label for="email" class="errorMsg">example@gmail.com</label>
-                                </div> -->
                                 <div class="faculty col-1">
                                     <p class="title">Faculty</p>
                                     <select name="std_faculty" id="" class="input" required>
@@ -162,17 +138,12 @@ $fetched_data = mysqli_fetch_assoc($res);
                                         $res = mysqli_query($conn, "Select * from faculty");
                                         while ($data = mysqli_fetch_assoc($res)) {
                                             // $data = mysqli_fetch_assoc($res);
-                                            if($fetched_data['faculty_id'] == $data['faculty_id']){
+                                            if ($fetched_data['faculty_id'] == $data['faculty_id']) {
                                                 echo '<option selected value="' . $data['faculty_id'] . '">' . $data['faculty_name'] . '</option>';
                                             }
                                             echo '<option value="' . $data['faculty_id'] . '">' . $data['faculty_name'] . '</option>';
                                         }
                                         ?>
-                                        <!-- <option value="DIT">Diploam In Information Technology</option>
-                                <option value="DCE">Diploam In Civil Engineering</option>
-                                <option value="DEE">Diploam In Electrical Engineering</option>
-                                <option value="DGE">Diploam In Geomatics Engineering</option>
-                                <option value="DHM">Diploam In Hotel Management</option> -->
                                     </select>
                                 </div>
 
@@ -188,7 +159,7 @@ $fetched_data = mysqli_fetch_assoc($res);
                         <div class="form-item two-column">
                             <div class="col-1">
                                 <p class="title">Date Of Birth (in A.D)</p>
-                                <input type="date" class="input" name="std_dob" id="dob" required  value="<?php echo $fetched_data['dob'] ?>">
+                                <input type="date" class="input" name="std_dob" id="dob" required value="<?php echo $fetched_data['dob'] ?>">
                                 <p id="DOBErrorMsg" class="errorMsg">Student should be atleast 14years old.</p>
                             </div>
 
@@ -202,12 +173,12 @@ $fetched_data = mysqli_fetch_assoc($res);
                                     while ($data = mysqli_fetch_assoc($res)) {
 
                                         // $data = mysqli_fetch_assoc($res);
-                                        if($fetched_data['yoj'] == $data['batch_id']){
+                                        if ($fetched_data['yoj'] == $data['batch_id']) {
                                             echo '<option selected value="' . $data['batch_id'] . '">' . $data['batch_name'] . '</option>';
                                         }
                                         echo '<option value="' . $data['batch_id'] . '">' . $data['batch_name'] . '</option>';
                                     }
-                                    
+
                                     ?>
 
                                 </select>
@@ -219,7 +190,7 @@ $fetched_data = mysqli_fetch_assoc($res);
                         <!-- Submit and Reset Button -->
                         <div class="form-item two-column">
                             <!-- <input type="reset" value="Reset" class="input col-1"> -->
-                            <input type="submit" value="Update" name="updateBtn" class="input">
+                            <input type="submit" value="Update" name="updateBtn" id="updateBtn" class="input">
                         </div>
 
                         <!-- <div class="form-item">
@@ -269,9 +240,9 @@ $fetched_data = mysqli_fetch_assoc($res);
                         </div> -->
 
                         <?php
-                            if($_SERVER['HTTP_REFERER'] == "http://localhost/minor%20project/search-by-faculty.php"){
-                                $_SESSION['previous_url'] = "http://localhost/minor%20project/search-by-faculty.php";
-                            }
+                        if ($_SERVER['HTTP_REFERER'] == "http://localhost/minor%20project/search-by-faculty.php") {
+                            $_SESSION['previous_url'] = "http://localhost/minor%20project/search-by-faculty.php";
+                        }
                         ?>
                     </form>
                 </div>

@@ -2,65 +2,37 @@
 include "./php/header.php";
 // echo $_SERVER['HTTP_REFERER']; 
 
-// print_r($_POST);
-
 if (!isset($_POST['submitBtn']) && ($_SESSION['isDeleted'] != "yes") && $_SESSION['isUpdated'] != "yes") {
     header(URL . "php/view-student.php");
 } else {
-    // echo "this is refreshed page";
-
 ?>
-    <!-- // $faculty_id = $_POST['std_faculty'];
-    // $batch = $_POST['batch'];
 
-    // $sql = "SELECT * FROM students
-    // INNER JOIN faculty on students.faculty_id = faculty.faculty_id
-    // LEFT JOIN batch on students.yoj = batch.batch_id
-    // WHERE students.faculty_id = $faculty_id AND students.yoj = $batch";
-
-    // $res = mysqli_query($conn, $sql);
-    // if (mysqli_num_rows($res) <= 0) { // echo "No result found" ; // } else { // } <div class="container"> -->
     <div class="container">
         <div class="main" style="width: 100%;">
 
             <div class="alertBox <?php if ($_SESSION['isDeleted'] == "yes") echo "deleted" ?>" <?php if ((isset($_SESSION['isDeleted']) && ($_SESSION['isDeleted'] == "yes")) || $_SESSION['isUpdated'] == "yes") {
                                                                                                     echo 'style="display:flex"';
-                                                                                                    // $_SESSION['isDeleted'] = "no";
-                                                                                                    // $_SESSION['isUpdated'] = "no";
                                                                                                 } ?>>
                 <strong>
                     <?php
                     if ($_SESSION['isDeleted'] == "yes") {
                         echo "Student Deleted Successfully!!!";
-                        $_SESSION['isDeleted'] = "no";
+                        // $_SESSION['isDeleted'] = "no";
+                        unset($_SESSION['isDeleted']);
                     }
                     if ($_SESSION['isUpdated'] == "yes") {
                         echo "Student Updated Successfully!!!";
-                        $_SESSION['isUpdated'] = "no";
+                        // $_SESSION['isUpdated'] = "no";
+                        unset($_SESSION['isUpdated']);
                     }
                     ?>
                 </strong>
                 <button type="button" class="btn-close"></button>
             </div>
 
-            <!-- <div class="alertBox deleted" <?php
-                                                // if (isset($_SESSION['isDeleted']) && ($_SESSION['isDeleted'] == "yes")) {
-                                                //     echo 'style="display:flex"';
-                                                //     $_SESSION['isDeleted'] = "no";
-                                                // }
-                                                ?>>
-            <strong>
-                Student Deleted Successfully!!!
-            </strong>
-            <button type="button" class="btn-close"></button>
-        </div> -->
-
-
             <div class="ShowingResultTitle">
                 <a href="<?php echo URL ?>php/view-student.php"><button class="backBtn"></button></a>
                 <?php
-
-                // echo "this is refreshed page";
 
                 $faculty_id = $_POST['std_faculty'];
                 $batch = $_POST['batch'];
@@ -86,7 +58,6 @@ if (!isset($_POST['submitBtn']) && ($_SESSION['isDeleted'] != "yes") && $_SESSIO
             <div class="table" style="height: calc(100vh - 154px);">
                 <table>
                     <thead>
-                        <!-- <tr> -->
                         <th>SN.</th>
                         <th class="std_id">Student ID</th>
                         <th>Name</th>
@@ -98,14 +69,10 @@ if (!isset($_POST['submitBtn']) && ($_SESSION['isDeleted'] != "yes") && $_SESSIO
                         <th class="dob-field">Date Of Birth</th>
                         <th>Year Of Joining</th>
                         <th>Action</th>
-                        <!-- </tr> -->
                     </thead>
 
 
                     <?php
-
-                    // $faculty_id = $_POST['std_faculty'];
-                    // $batch = $_POST['batch'];
 
                     $sql = "SELECT * FROM students
                     INNER JOIN faculty on students.faculty_id = faculty.faculty_id
@@ -115,18 +82,16 @@ if (!isset($_POST['submitBtn']) && ($_SESSION['isDeleted'] != "yes") && $_SESSIO
 
                     $res = mysqli_query($conn, $sql);
                     if (mysqli_num_rows($res) > 0) {
-                        // echo "data found";
                         $i = 1;
                         while ($data = mysqli_fetch_assoc($res)) {
                     ?>
                             <tr>
                                 <td><?php echo $i++ ?></td>
-                                <!-- <td>DIT-2079-0120</td> -->
-                                <td><?php echo $data['std'] ?></td>
+                                <td><?php echo $data['std_id'] ?></td>
                                 <td><?php echo $data['std_name'] ?></td>
                                 <td><?php echo $data['address'] ?></td>
-                                <td><?php echo $data['gender'] ?></td>
-                                <td><?php echo $data['faculty_short'] ?></td>
+                                <td class="center"><?php echo $data['gender'] ?></td>
+                                <td class="center"><?php echo $data['faculty_short'] ?></td>
                                 <td>
                                     <?php
                                     echo $data['parents_name']
@@ -171,4 +136,8 @@ if (!isset($_POST['submitBtn']) && ($_SESSION['isDeleted'] != "yes") && $_SESSIO
 <?php
 }
 ?>
+
+<script>
+    document.title = document.querySelector(".ShowingResultTitle").innerText;
+</script>
 <script src="<?php echo URL ?>js/alertBox.js"></script>

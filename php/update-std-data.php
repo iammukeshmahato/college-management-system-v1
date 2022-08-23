@@ -1,6 +1,5 @@
 <?php
 include "./header.php";
-// print_r($_POST);
 if(!isset($_POST['updateBtn'])){
     header("location:" . URL . "php/view-student.php");
 }
@@ -19,8 +18,6 @@ $yoj = $_POST['std_yoj'];
 // by default isUpdated = no
 $_SESSION['isUpdated'] = "no";
 
-
-
 $sql = "UPDATE students SET
     `std_name` = '$name',
     `address` = '$add',
@@ -30,7 +27,7 @@ $sql = "UPDATE students SET
     `phone` = '$phone',
     `dob` = '$dob',
     `yoj` = $yoj
-    WHERE std_id = $update_id";
+    WHERE std_id = '$update_id'";
 $res = mysqli_query($conn, $sql);
 
 

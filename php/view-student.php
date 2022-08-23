@@ -95,13 +95,6 @@ include("./header.php")
                                     }
                                     ?>
                                 </select>
-                                <!-- <select name="faculty" class="input">
-                                <option value="Diploma in Information Technology">Diploma in Information Technology</option>
-                                <option value="Diploma in Civil Engineering">Diploma in Civil Engineering</option>
-                                <option value="Diploma in Hotel Management">Diploma in Hotel Management</option>
-                                <option value="Diploma in Electrical Engineering">Diploma in Electrical Engineering</option>
-                                <option value="Diploma in Geomatics Engineering">Diploma in Geomatics Engineering</option>
-                            </select> -->
                             </div>
 
                             <div class="yearofjoining">
@@ -114,15 +107,6 @@ include("./header.php")
                                         echo '<option value="' . $data['batch_id'] . '">' . $data['batch_name'] . '</option>';
                                     }
                                     ?>
-                                    <!-- <option value="2070">2070</option>
-                                <option value="2071">2071</option>
-                                <option value="2072">2072</option>
-                                <option value="2073">2073</option>
-                                <option value="2074">2074</option>
-                                <option value="2075">2075</option>
-                                <option value="2076">2076</option>
-                                <option value="2077">2077</option>
-                                <option value="2078">2078</option> -->
                                 </select>
                             </div>
                         </div>

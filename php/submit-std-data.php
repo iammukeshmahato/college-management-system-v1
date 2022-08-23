@@ -1,6 +1,6 @@
 <?php
-session_start();
-include 'conn.php';
+include("./header.php");
+
 if (isset($_POST['submitBtn'])) {
 
     $name = $_POST['std_name'];
@@ -13,7 +13,17 @@ if (isset($_POST['submitBtn'])) {
     $dob = $_POST['std_dob'];
     $yoj = $_POST['std_yoj'];
 
-    // echo $_SESSION['isAdded'];
+    // function to generate hash data as youtube url
+    // function generateHash(): string
+    // {
+    //     $bytes = random_bytes(8);
+    //     $base64 = base64_encode($bytes);
+
+    //     return rtrim(strtr($base64, '+/', '-_'), '=');
+    // }
+    //  $hash = generateHash();
+
+    // $name = mysqli_real_escape_string($conn, $_POST['std_name']);
 
     // echo '$name = ' .$name . "type = ". gettype($name) . "<br>";
     // echo '$add = ' .$add . "type = ". gettype($add) . "<br>";
@@ -26,24 +36,18 @@ if (isset($_POST['submitBtn'])) {
 
     // $sql = "INSERT INTO `students` (`std_name`, `address`, `gender`, `faculty_id`, `parents_name`, `phone`, `dob`, `yoj`) VALUES 
     // ('$name', '$add', '$gender', $faculty, '$parentsName', '$phone', '$dob', $yoj)";
-    // // echo "line 31";
-    // // print_r($_POST);
     // $res = mysqli_query($conn, $sql);
 
 
     $faculty_short = (mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM faculty WHERE faculty_id = $faculty")))['faculty_short'];
-    $batch_name = (mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM batch WHERE batch_id = $yoj")))['batch_name'];
-
-    // echo "faculty = " . $faculty_short . "<br>";
-    // echo "batch = " . $batch_name . "<br>";
-
+    $batch_name = (mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM batch WHERE batch_id = $yoj")))['batch_name'];
 
     // $last_id = (mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM students INNER JOIN faculty on students.faculty_id = faculty.faculty_id LEFT JOIN batch on students.yoj = batch.batch_id WHERE faculty.faculty_id = $faculty AND batch.batch_id = $yoj")))['std_id'];
 
     $fetch_id_res = mysqli_query($conn, "SELECT * FROM students INNER JOIN faculty on students.faculty_id = faculty.faculty_id LEFT JOIN batch on students.yoj = batch.batch_id WHERE faculty.faculty_id = $faculty AND batch.batch_id = $yoj ORDER by students.std_id DESC");
-    $last_id = intval(substr((mysqli_fetch_assoc($fetch_id_res))['std'], -3));
+    $last_id = intval(substr((mysqli_fetch_assoc($fetch_id_res))['std_id'], -3));
     $last_id++;
-    if(mysqli_num_rows($fetch_id_res) > 0){
+    if (mysqli_num_rows($fetch_id_res) > 0) {
         if ($last_id < 100) {
             if ($last_id < 10) {
                 $increment = "00" . $last_id;
@@ -53,7 +57,7 @@ if (isset($_POST['submitBtn'])) {
         } else {
             $increment = $i;
         }
-    }else{
+    } else {
         $increment = "001";
     }
 
@@ -61,15 +65,18 @@ if (isset($_POST['submitBtn'])) {
     // echo $id;
 
 
-    $sql = "INSERT INTO `students` (`std`, `std_name`, `address`, `gender`, `faculty_id`, `parents_name`, `phone`, `dob`, `yoj`) VALUES 
+    // sql to insert data along hash id 
+    // $sql = "INSERT INTO `students` (`std_id`, `std_name`, `address`, `gender`, `faculty_id`, `parents_name`, `phone`, `dob`, `yoj`, `id_hash`) VALUES 
+    // ('$id', '$name', '$add', '$gender', $faculty, '$parentsName', '$phone', '$dob', $yoj, '$hash')";
+
+    $sql = "INSERT INTO `students` (`std_id`, `std_name`, `address`, `gender`, `faculty_id`, `parents_name`, `phone`, `dob`, `yoj`) VALUES 
     ('$id', '$name', '$add', '$gender', $faculty, '$parentsName', '$phone', '$dob', $yoj)";
     $res = mysqli_query($conn, $sql);
-    
+
     if ($res) {
         $_SESSION['isAdded'] = "yes";
         header("location: add-student.php");
     }
-
-}else{
+} else {
     header("location: add-student.php");
 }
