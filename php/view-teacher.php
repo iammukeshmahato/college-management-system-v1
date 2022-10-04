@@ -65,19 +65,39 @@ include "./header.php";
                 <h1 class="main-title">College Management System | View Teacher</h1>
             </div>
 
-            <div class="alertBox <?php if ($_SESSION['isDeleted'] == "yes") echo "deleted" ?>" <?php if ((isset($_SESSION['isDeleted']) && ($_SESSION['isDeleted'] == "yes")) || $_SESSION['isUpdated'] == "yes") {
+            <!-- <div class="alertBox <?php if ($_SESSION['isDeleted'] == "yes") echo "deleted" ?>" <?php if ((isset($_SESSION['isDeleted']) && ($_SESSION['isDeleted'] == "yes")) || $_SESSION['isUpdated'] == "yes") {
+                                                                                                        echo 'style="display:flex"';
+                                                                                                    } ?>>
+                <strong>
+                    <?php
+                    // if ($_SESSION['isDeleted'] == "yes") {
+                    //     echo "Teacher Deleted Successfully!!!";
+                    //     $_SESSION['isDeleted'] = "no";
+                    //     unset($_SESSION['isDeleted']);
+                    // }
+                    // if ($_SESSION['isUpdated'] == "yes") {
+                    //     echo "Teacher Updated Successfully!!!";
+                    //     $_SESSION['isUpdated'] = "no";
+                    //     unset($_SESSION['isUpdated']);
+                    // }
+                    ?>
+                </strong>
+                <button type="button" class="btn-close"></button>
+            </div> -->
+
+            <div class="alertBox <?php if (isset($_SESSION['isDeleted'])) echo "deleted" ?>" <?php if ((isset($_SESSION['isDeleted']) && ($_SESSION['isDeleted'] == "yes")) || $_SESSION['isUpdated'] == "yes") {
                                                                                                     echo 'style="display:flex"';
                                                                                                 } ?>>
                 <strong>
                     <?php
-                    if ($_SESSION['isDeleted'] == "yes") {
+                    if (isset($_SESSION['isDeleted'])) {
                         echo "Teacher Deleted Successfully!!!";
-                        $_SESSION['isDeleted'] = "no";
+                        // $_SESSION['isDeleted'] = "no";
                         unset($_SESSION['isDeleted']);
                     }
-                    if ($_SESSION['isUpdated'] == "yes") {
+                    if (isset($_SESSION['isUpdated'])) {
                         echo "Teacher Updated Successfully!!!";
-                        $_SESSION['isUpdated'] = "no";
+                        // $_SESSION['isUpdated'] = "no";
                         unset($_SESSION['isUpdated']);
                     }
                     ?>
@@ -85,24 +105,39 @@ include "./header.php";
                 <button type="button" class="btn-close"></button>
             </div>
 
-            <div class="ShowingResultTitle" style="display: <?php if(($_POST['searchText']=="") || $_POST['searchText']==" ") echo "none;" ?>">
+            <!-- showing result div for post method -->
+            <!-- <div class="ShowingResultTitle" style="display: <?php if (($_POST['searchText'] == "") || $_POST['searchText'] == " ") echo "none;" ?>">
                 <a href="<?php echo URL ?>php/view-teacher.php"><button class="backBtn"></button></a>
-                Showing results for "<?php echo $_POST['searchText']?>".
+                Showing results for "<?php echo $_POST['searchText'] ?>".
+            </div> -->
+
+            <!-- showing result div for get method -->
+            <div class="ShowingResultTitle" style="display: <?php if (($_GET['searchText'] == "") || $_GET['searchText'] == " ") echo "none;" ?>">
+                <a href="<?php echo URL ?>php/view-teacher.php"><button class="backBtn"></button></a>
+                Showing results for "<?php echo $_GET['searchText'] ?>".
             </div>
 
-            <form method="post" id="SearchForm">
+            <!-- main search box -->
+            <!-- <form method="post" id="SearchForm">
 
                 <div class="searchBox">
-                    <!-- <div class="sort">
+                    <div class="sort">
                         <label for="sortBy">Sort By</label>
                         <select name="sortBy" id="sortBy" class="input">
                             <option value="name">Name Asc</option>
                             <option value="name">Name Desc</option>
                             <option value="name">Recently Added</option>
                         </select>
-                    </div> -->
+                    </div>
                     <input type="text" id="searchBox" class="input" name="searchText" value="" placeholder="Type to search" style="width: 12rem; font-size: 1rem; font-family:'Times New Roman', Times, serif;" autocomplete="off">
                     <Button type="submit" class="searchBtn" name="searchBtn" style="display: none;">Search</Button>
+                </div>
+            </form> -->
+
+            <!-- trying get method -->
+            <form method="get" id="SearchForm">
+                <div class="searchBox">
+                    <input type="text" id="searchBox" class="input" name="searchText" placeholder="Type to search" style="width: 12rem; font-size: 1rem; font-family:'Times New Roman', Times, serif;" autocomplete="off">
                 </div>
             </form>
 
@@ -120,11 +155,14 @@ include "./header.php";
                     </thead>
 
                     <?php
-                    if (isset($_POST['searchBtn'])) {
-                        $searchText = $_POST['searchText'];
-                        $sql = "SELECT * FROM teachers WHERE t_name like '%$searchText%'";
+                    // if (isset($_POST['searchBtn'])) {
+                    if (isset($_GET['searchText'])) {
+                        // $searchText = mysqli_escape_string($conn, $_POST['searchText']);
+                        $searchText = mysqli_escape_string($conn, $_GET['searchText']);
+
+                        $sql = "SELECT * FROM teachers WHERE t_name like '$searchText%'";
                         // $sql = "SELECT * FROM teachers WHERE t_name like '%$searchText%' ORDER BY t_name ASC";
-                        $_POST['searchText']=" ";
+                        // $_POST['searchText'] = " ";
                         $res = mysqli_query($conn, $sql);
                     } else {
                         $sql = "SELECT * FROM teachers";
@@ -153,7 +191,7 @@ include "./header.php";
 
                                         <form action="<?php echo URL ?>php/delete-teacher.php" method="post">
                                             <input type="text" name="delete_id" value="<?php echo $data['t_id'] ?>" style="visibility: hidden; display:none;">
-                                            <input type="submit" value="Delete" class="deleteBtn" name="deleteBtn" onClick="return confirm('Are you sure?')">
+                                            <input type="submit" value="Delete" class="deleteBtn" name="deleteBtn" onClick="return confirm('Are you sure want to delete?')">
                                         </form>
                                     </span>
                                 </td>

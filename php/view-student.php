@@ -65,7 +65,7 @@ include("./header.php")
             </div>
 
             <div class="search-wrapper">
-                <form action=" <?php echo URL . 'result.php' ?>" method="post">
+                <form action=" <?php echo URL . 'result.php' ?>" method="">
                     <div class="individual-student-search-section">
                         <!-- <img src="/person_search_FILL0_wght400_GRAD0_opsz48.png"> -->
                         <h2>Find a Student</h2>

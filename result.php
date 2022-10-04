@@ -1,16 +1,23 @@
 <?php
 include "./php/header.php";
 
-if (!isset($_POST['submitBtn']) && ($_SESSION['isDeleted'] != "yes") && $_SESSION['isUpdated'] != "yes") {
+if (!isset($_GET['submitBtn']) && !isset($_SESSION['isDeleted']) && !isset($_SESSION['isUpdated'])) {
     header("location: " . URL . "php/view-student.php");
+}else{
+    $userInput =mysqli_real_escape_string($conn, $_GET['userInput']);
 }
 
-$userInput = $_POST['userInput'];
-if ($userInput == "") {
-    $userInput = $_SESSION['$userInput'];
-} else {
-    $_SESSION['$userInput'] = $userInput;
-}
+// if (isset($_POST['submitBtn'])) {
+//     $userInput = $_POST['userInput'];
+// } else {
+//     $userInput = $_SESSION['$userInput'];
+// }
+
+// if ($userInput == "") {
+//     $userInput = $_SESSION['$userInput'];
+// } else {
+//     $_SESSION['$userInput'] = $userInput;
+// }
 ?>
 
 <div class="container">
@@ -36,6 +43,10 @@ if ($userInput == "") {
             <button type="button" class="btn-close"></button>
         </div>
 
+        <!-- <div class="ShowingResultTitle">
+            <a href="<?php echo URL ?>php/view-student.php"><button class="backBtn"></button></a>
+            Showing results for "<?php echo $userInput ?>".
+        </div> -->
         <div class="ShowingResultTitle">
             <a href="<?php echo URL ?>php/view-student.php"><button class="backBtn"></button></a>
             Showing results for "<?php echo $userInput ?>".
@@ -59,11 +70,15 @@ if ($userInput == "") {
 
 
                 <?php
+                // $sql = "SELECT * 
+                //     FROM students 
+                //     INNER JOIN faculty  ON students.faculty_id = faculty.faculty_id left join batch on students.yoj = batch.batch_id
+                //     WHERE std_id = '$userInput' OR std_name like '%$userInput%' OR parents_name like '%$userInput%' OR phone like '%$userInput%' OR dob = '$userInput'
+                //     ";
                 $sql = "SELECT * 
                     FROM students 
                     INNER JOIN faculty  ON students.faculty_id = faculty.faculty_id left join batch on students.yoj = batch.batch_id
-                    WHERE std_id = '$userInput' OR std_name like '%$userInput%' OR parents_name like '%$userInput%' OR phone like '%$userInput%' OR dob = '$userInput'
-                    ";
+                    WHERE std_id = '$userInput' OR std_name like '$userInput%'";
 
                 $res = mysqli_query($conn, $sql);
                 if (mysqli_num_rows($res) > 0) {
@@ -98,7 +113,7 @@ if ($userInput == "") {
 
                                     <form action="<?php echo URL . 'php/delete.php' ?>" method="post">
                                         <input type="text" name="delete_id" value="<?php echo $data['std_id'] ?>" style="visibility: hidden; display:none;">
-                                        <input type="submit" value="Delete" class="deleteBtn" name="deleteBtn" onClick="return confirm('Are you sure?')">
+                                        <input type="submit" value="Delete" class="deleteBtn" name="deleteBtn" onClick="return confirm('Are you sure want to delete?')">
                                     </form>
 
                                     <!-- <a href="<?php echo URL . "php/delete.php?delete_id=" . md5($data['std_id']) ?>" class="deleteBtn">Delete</a> -->

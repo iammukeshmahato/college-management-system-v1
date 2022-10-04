@@ -113,7 +113,7 @@ if (!isset($_POST['submitBtn']) && ($_SESSION['isDeleted'] != "yes") && $_SESSIO
 
                                         <form action="<?php echo URL . 'php/delete.php' ?>" method="post">
                                             <input type="text" name="delete_id" value="<?php echo $data['std_id'] ?>" style="visibility: hidden; display:none;">
-                                            <input type="submit" value="Delete" class="deleteBtn" name="deleteBtn" onClick="return confirm('Are you sure?')">
+                                            <input type="submit" value="Delete" class="deleteBtn" name="deleteBtn" onClick="return confirm('Are you sure want to delete?')">
                                         </form>
 
                                         <!-- <a href="<?php echo URL . "php/delete.php?delete_id=" . md5($data['std_id']) ?>" class="deleteBtn">Delete</a> -->

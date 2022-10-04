@@ -79,9 +79,9 @@ $fetched_data = mysqli_fetch_assoc($res);
                 <h1 class="main-title">College Management System | Update Student</h1>
             </div>
 
-            <div class="alertBox" <?php if (isset($_SESSION['isAdded']) && ($_SESSION['isAdded'] == "yes")) {
+            <div class="alertBox" <?php if (isset($_SESSION['isAdded'])) {
                                         echo 'style="display:flex"';
-                                        $_SESSION['isAdded'] = "no";
+                                        unset($_SESSION['isAdded']);
                                     } ?>>
                 <strong>
                     Student Updated Successfully!!!

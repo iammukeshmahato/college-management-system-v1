@@ -8,22 +8,22 @@ let allInput = document.querySelectorAll("input[type=text]");
 if(btn == null){
     btn = document.querySelector("#updateBtn");
 }
-// let updateBtn = document.querySelector("#updateBtn")
+
 // let dob = document.querySelector("#dob");
 
 phone.addEventListener("input", (e) => {
-    // console.log("Blur event fired");
     const regex = /^9[678]{1}[0-9]{8}$/;
     if (regex.test(phone.value)) {
         phone.classList.remove("invalid");
         PhoneErrorMsg.style.display = "none";
         btn.removeAttribute("disabled");
-        // updateBtn.removeAttribute("disabled");
+        console.log(phone.classList);
     } else {
         phone.classList.add("invalid");
+        // console.log(phone.value);
+        console.log(phone.classList);
         PhoneErrorMsg.style.display = "block";
         btn.setAttribute("disabled" ,"");
-        // updateBtn.setAttribute("disabled" ,"");
     }
 
 })
@@ -45,10 +45,8 @@ phone.addEventListener("input", (e) => {
 // })
 
 allInput.forEach(elem => {
-    // console.log(elem);
     let regEx = /<script>/;
     elem.addEventListener("input", ()=>{
-        // console.log(elem.value);
         if(regEx.test(elem.value)){
             elem.classList.add("invalid");
             btn.setAttribute("disabled" ,"");
