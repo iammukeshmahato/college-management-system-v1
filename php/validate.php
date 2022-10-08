@@ -66,13 +66,6 @@ function validate_email($sessionName, $email)
 // }
 
 
-// function validate_phone($phone)
-// {
-//     if (!preg_match("/^9[678]{1}[0-9]{8}$", $phone)) {
-//         $_SESSION['phoneError'] = "Invalid Phone Number, Must be 10 digit.";
-//     }
-// }
-
 function validate_phone($sessionName, $phone)
 {
     if (!empty($phone)) {
@@ -118,19 +111,3 @@ function validate_script($input)
         }
     }
 }
-
-// function validate_email($sessionName, $email)
-// {
-//     if (!empty($email)) {
-//         $_SESSION[$sessionName] = $email;
-//         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-//             $_SESSION[$sessionName] = "must include '@' and '.'";
-//             return false;
-//         } else {
-//             return true;
-//         }
-//     } else {
-//         $_SESSION[$sessionName] = "Email can't be empty";
-//         return false;
-//     }
-// }
