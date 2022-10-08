@@ -173,6 +173,7 @@ body {
    padding: 1rem 2rem;
    position: relative;
    color: #fff;
+   user-select: none;
 }
 
 .card::before {

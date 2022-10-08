@@ -6,12 +6,12 @@ include "./header.php";
 <html>
 
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Add Teacher</title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="mystyle.css">
+    <!-- <meta charset="utf-8"> -->
+    <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge"> -->
+    <!-- <title>Add Teacher</title> -->
+    <!-- <meta name="description" content=""> -->
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
+    <!-- <link rel="stylesheet" href="mystyle.css"> -->
 
     <style>
         .form-item {
@@ -89,37 +89,55 @@ include "./header.php";
                     <form action="add-teacher-data.php" method="post">
                         <div class="form-item">
                             <p class="title">Name</p>
-                            <input type="text" name="fullname" class="input" id="fullname" required placeholder="Enter Your Full Name" autocomplete="off">
+                            <input type="text" name="fullname" class="input" id="fullname" required placeholder="Enter Your Full Name" autocomplete="off" value="<?php echo $_SESSION['inputTeacherName']; ?>">
+                            <label for="fullname" class="errorMsg invalid" <?php if (isset($_SESSION['nameError'])) echo 'style="display:block"'; ?>>
+                                <?php echo $_SESSION['nameError'];
+                                unset($_SESSION['nameError'], $_SESSION['inputTeacherName']) ?>
+                            </label>
                         </div>
 
                         <div class="form-item">
                             <p class="title">Permanent Address</p>
-                            <input type="text" name="address" class="input" id="fullname" required placeholder="Enter your full address" autocomplete="off">
+                            <input type="text" name="address" class="input" id="fullname" required placeholder="Enter your full address" autocomplete="off" value="<?php if (isset($_SESSION['inputTeacherAdd'])) echo $_SESSION['inputTeacherAdd'];
+                                                                                                                                                                    unset($_SESSION['inputTeacherAdd']) ?>">
                         </div>
 
                         <div class="form-item">
                             <p class="title">Gender</p>
-                            <input type="radio" class="radio" name="gender" value="Male" required><span>Male</span>
-                            <input type="radio" class="radio" name="gender" value="Female" required><span>Female</span>
-                            <input type="radio" class="radio" name="gender" value="Other" required><span>Other</span>
+                            <input type="radio" class="radio" name="gender" value="Male" required <?php if ($_SESSION['inputTeacherGender'] && $_SESSION['inputTeacherGender'] == "Male") echo "checked";
+                                                                                                    unset($_SESSION['inputTeacherGender']); ?>><span>Male</span>
+                            <input type="radio" class="radio" name="gender" value="Female" required <?php if ($_SESSION['inputTeacherGender'] && $_SESSION['inputTeacherGender'] == "Female") echo "checked";
+                                                                                                    unset($_SESSION['inputTeacherGender']); ?>><span>Female</span>
+                            <input type="radio" class="radio" name="gender" value="Other" required <?php if ($_SESSION['inputTeacherGender'] && $_SESSION['inputTeacherGender'] == "Other") echo "checked";
+                                                                                                    unset($_SESSION['inputTeacherGender']); ?>><span>Other</span>
                         </div>
 
                         <div class="form-item">
                             <p class="title">Qualification</p>
-                            <textarea type="text" class="input" name="qualification" required placeholder="Enter Qualification" autocomplete="off" onkeyup="adjustHeight(this)" style="min-height:40px; min-width:100%; max-height: 8rem; max-width: 100%; padding-top: 0.5rem; font-size:14px; padding-bottom: 0.5rem; overflow:auto;"></textarea>
+                            <textarea type="text" class="input" name="qualification" required placeholder="Enter Qualification" autocomplete="off" onkeyup="adjustHeight(this)" style="min-height:40px; min-width:100%; max-height: 8rem; max-width: 100%; padding-top: 0.5rem; font-size:14px; padding-bottom: 0.5rem; overflow:auto;"><?php echo $_SESSION['inputTeacherQualification']; unset($_SESSION['inputTeacherQualification']); ?></textarea>
                         </div>
 
                         <div class="form-item">
                             <div class="contact two-column">
                                 <div class="email col-1">
                                     <p class="title">Email</p>
-                                    <input type="email" class="input" id="fullname" name="email" required placeholder="example@gmail.com" autocomplete="off">
+                                    <input type="email" class="input" id="fullname" name="email" required placeholder="example@gmail.com" autocomplete="off" value="<?php echo $_SESSION['inputTeacherEmail']; ?>">
+                                    <label for="fullname" class="errorMsg invalid" <?php if (isset($_SESSION['emailError'])) echo 'style="display:block"'; ?>>
+                                        <?php echo $_SESSION['emailError'];
+                                        unset($_SESSION['emailError'], $_SESSION['inputTeacherEmail']) ?>
+                                    </label>
                                 </div>
 
                                 <div class="phone col-2">
                                     <p class="title">Phone</p>
-                                    <input type="tel" class="input" id="phone" name="phone" placeholder="Must be 10 digits" required autocomplete="off">
-                                    <p class="errorMsg">Invalid Phone Number. Should be 10 digit long</p>
+                                    <input type="tel" class="input" id="phone" name="phone" placeholder="Must be 10 digits" required autocomplete="off" value="<?php echo $_SESSION['inputTeacherPhone']; ?>">
+                                    <label for="fullname" class="errorMsg invalid" <?php if (isset($_SESSION['phoneError'])) echo 'style="display:block"'; ?>>
+                                        <?php echo $_SESSION['phoneError'];
+                                        unset($_SESSION['phoneError'], $_SESSION['inputTeacherPhone']) ?>
+                                    </label>
+                                    <!-- <p class="errorMsg">Invalid Phone Number. Should be 10 digit long</p> -->
+
+
                                 </div>
                             </div>
                         </div>
@@ -136,11 +154,13 @@ include "./header.php";
         </div>
 
         <script>
+            document.title = "Add Teacher";
+
             function adjustHeight(el) {
                 el.style.height = (el.scrollHeight > el.clientHeight) ? (el.scrollHeight) + "px" : "40px";
             }
         </script>
-        <script src="<?php echo URL ?>js/validate.js"></script>
+        <!-- <script src="<?php echo URL ?>js/validate.js"></script> -->
         <script src="<?php echo URL ?>js/alertBox.js"></script>
 </body>
 

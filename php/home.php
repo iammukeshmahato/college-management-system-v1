@@ -63,7 +63,9 @@ include "header.php";
             <div class="title-bar">
                 <h1 class="main-title">College Management System | Home</h1>
             </div>
+
             <div class="slider"></div>
+
             <div class="card-sec">
                 <div class="card student-card">
                     <h1 id="total-std">

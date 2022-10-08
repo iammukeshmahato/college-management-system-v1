@@ -103,7 +103,8 @@ include "header.php"
                             <input type="radio" name="std_gender" value="Male" class="radio" required <?php if (isset($_SESSION['inputStdGender'])) {
                                                                                                             if ($_SESSION['inputStdGender'] == "Male") echo "checked";
                                                                                                             unset($_SESSION['inputStdGender']);
-                                                                                                        } ?>><span>Male</span>
+                                                                                                        } ?>>
+                            <span>Male</span>
                             <input type="radio" name="std_gender" value="Female" class="radio" required <?php if (isset($_SESSION['inputStdGender'])) {
                                                                                                             if ($_SESSION['inputStdGender'] == "Female") echo "checked";
                                                                                                             unset($_SESSION['inputStdGender']);
@@ -160,8 +161,9 @@ include "header.php"
                                     <p class="title">Phone</p>
                                     <input type="tel" class="input" name="std_phone" placeholder="Must be 10 digits" required autocomplete="off" id="phone" value="<?php echo $_SESSION['inputStdPhone'] ?>">
                                     <p class="errorMsg invalid" <?php if (isset($_SESSION['phoneError'])) echo "style='display:block'";
-                                                                unset($_SESSION['phoneError']);
-                                                                unset($_SESSION['inputStdPhone']) ?>>Invalid Phone Number. Should be 10 digit long</p>
+                                                                ?>><?php echo $_SESSION['phoneError'];
+                                                                    unset($_SESSION['phoneError']);
+                                                                    unset($_SESSION['inputStdPhone']); ?></p>
                                 </div>
                             </div>
                         </div>

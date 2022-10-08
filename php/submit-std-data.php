@@ -65,22 +65,21 @@ if (isset($_POST['submitBtn'])) {
     // echo $id;
 
     //validating
-    $isValidName = validate_name($name);
-    $isValidParentName = validate_ParentName($parentsName);
-    $isValidPhone = validate_phone($phone);
+    $isValidName = validate_name("inputStdName", $name);
+    $isValidParentName = validate_ParentName("inputStdParentName", $parentsName);
+    $isValidPhone = validate_phone("inputStdPhone", $phone);
     $_SESSION['inputStdAdd'] = $add;
     $_SESSION['inputStdGender'] = $gender;
     $_SESSION['inputStdFaculty'] = $faculty;
     $_SESSION['inputStdDOB'] = $dob;
     $_SESSION['inputStdYOJ'] = $yoj;
-    
+
     // $isValidPhone = validate_phone("9812345678");
 
     if (!$isValidName || !$isValidParentName || !$isValidPhone) {
         // echo "Invalid";
         header("location: " . URL . "php/add-student.php");
-    } 
-    else {
+    } else {
         // echo "everytihing is OK to upload";
 
         // sql to insert data along hash id 
@@ -92,6 +91,16 @@ if (isset($_POST['submitBtn'])) {
         $res = mysqli_query($conn, $sql);
 
         if ($res) {
+            unset(
+                $_SESSION['inputStdName'],
+                $_SESSION['inputStdParentName'],
+                $_SESSION['inputStdPhone'],
+                $_SESSION['inputStdAdd'],
+                $_SESSION['inputStdGender'],
+                $_SESSION['inputStdFaculty'],
+                $_SESSION['inputStdDOB'],
+                $_SESSION['inputStdYOJ']
+            );
             $_SESSION['isAdded'] = "yes";
             header("location:" . URL . "php/add-student.php");
         }
