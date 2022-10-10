@@ -1,22 +1,24 @@
 <?php
 include "./header.php";
-if(!isset($_POST['deleteBtn'])){
+include "./validate.php";
+if (!isset($_GET['deleteBtn'])) {
     header("location:" . URL . "php/view-student.php");
 }
 
-$id = $_POST['delete_id'];
-
-
+$id = validate_script(mysqli_escape_string($conn, base64_decode($_GET['delete_id'])));
 $sql = "DELETE FROM students WHERE std_id = '$id'";
 $res = mysqli_query($conn, $sql);
-if($res){
+
+if ($res) {
     $_SESSION['isDeleted'] = "yes";
-    if($_SERVER['HTTP_REFERER'] == "http://localhost/minor%20project/search-by-faculty.php"){
-        header("location: http://localhost/minor%20project/search-by-faculty.php");
-    }else{
-        header("location: " . URL . "result.php");
+    if (strtok($_SERVER['HTTP_REFERER'], "?") == "http://localhost/minor%20project/result.php") {
+        header("location: " . $_SERVER['HTTP_REFERER']);
+    } elseif (strtok($_SERVER['HTTP_REFERER'], "?") == "http://localhost/minor%20project/search-by-faculty.php") {
+        header("location: " . $_SERVER['HTTP_REFERER']);
+    } else {
+        header("location:" . URL . "php/view-student.php");
     }
-}else{
+} else {
     echo "something went wrong";
     $_SESSION['isDeleted'] = "no";
 }

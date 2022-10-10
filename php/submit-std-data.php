@@ -74,10 +74,11 @@ if (isset($_POST['submitBtn'])) {
     $_SESSION['inputStdDOB'] = $dob;
     $_SESSION['inputStdYOJ'] = $yoj;
 
+    // echo "mmk => ". $_SESSION['inputStdGender'];
     // $isValidPhone = validate_phone("9812345678");
 
     if (!$isValidName || !$isValidParentName || !$isValidPhone) {
-        // echo "Invalid";
+        echo "Invalid";
         header("location: " . URL . "php/add-student.php");
     } else {
         // echo "everytihing is OK to upload";

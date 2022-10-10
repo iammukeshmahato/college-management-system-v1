@@ -85,8 +85,10 @@ include "header.php"
                         <div class="form-item">
                             <p class="title">Full Name</p>
                             <input type="text" class="input" id="fullname" required placeholder="Enter Your Full Name" autocomplete="off" name="std_name" value="<?php echo $_SESSION['inputStdName']; ?>">
-                            <label for="fullname" class="errorMsg invalid" <?php if (isset($_SESSION['nameError'])) echo 'style="display:block"'; ?>><?php echo $_SESSION['nameError'];
-                                                                                                                                                        unset($_SESSION['nameError'], $_SESSION['inputStdName']) ?></label>
+                            <label for="fullname" class="errorMsg invalid" <?php if (isset($_SESSION['nameError'])) echo 'style="display:block"'; ?>>
+                                <?php echo $_SESSION['nameError'];
+                                unset($_SESSION['nameError'], $_SESSION['inputStdName']) ?>
+                            </label>
                         </div>
 
                         <!-- Address -->
@@ -100,17 +102,17 @@ include "header.php"
                         <!-- Gender -->
                         <div class="form-item">
                             <p class="title">Gender</p>
-                            <input type="radio" name="std_gender" value="Male" class="radio" required <?php if (isset($_SESSION['inputStdGender'])) {
-                                                                                                            if ($_SESSION['inputStdGender'] == "Male") echo "checked";
+                            <input type="radio" name="std_gender" value="Male" class="radio" required <?php if (isset($_SESSION['inputStdGender']) && $_SESSION['inputStdGender'] == "Male") {
+                                                                                                            echo "checked";
                                                                                                             unset($_SESSION['inputStdGender']);
                                                                                                         } ?>>
                             <span>Male</span>
-                            <input type="radio" name="std_gender" value="Female" class="radio" required <?php if (isset($_SESSION['inputStdGender'])) {
-                                                                                                            if ($_SESSION['inputStdGender'] == "Female") echo "checked";
+                            <input type="radio" name="std_gender" value="Female" class="radio" required <?php if (isset($_SESSION['inputStdGender']) && $_SESSION['inputStdGender'] == "Female") {
+                                                                                                            echo "checked";
                                                                                                             unset($_SESSION['inputStdGender']);
                                                                                                         } ?>><span>Female</span>
-                            <input type="radio" name="std_gender" value="Other" class="radio" required <?php if (isset($_SESSION['inputStdGender'])) {
-                                                                                                            if ($_SESSION['inputStdGender'] == "Other") echo "checked";
+                            <input type="radio" name="std_gender" value="Other" class="radio" required <?php if (isset($_SESSION['inputStdGender']) && $_SESSION['inputStdGender'] == "Other") {
+                                                                                                            echo "checked";
                                                                                                             unset($_SESSION['inputStdGender']);
                                                                                                         } ?>><span>Other</span>
                         </div>
@@ -118,8 +120,10 @@ include "header.php"
                         <div class="form-item">
                             <p class="title">Parents' Name</p>
                             <input type="text" class="input" name="parentsName" required placeholder="Enter your father's or mother's name" value="<?php echo $_SESSION['inputStdParentName']; ?>">
-                            <label for="fullname" class="errorMsg invalid" <?php if (isset($_SESSION['ParentNameError'])) echo "style='display:block'"; ?>><?php echo $_SESSION['ParentNameError'];
-                                                                                                                                                            unset($_SESSION['ParentNameError'], $_SESSION['inputStdParentName']) ?></label>
+                            <label for="fullname" class="errorMsg invalid" <?php if (isset($_SESSION['ParentNameError'])) echo "style='display:block'"; ?>>
+                                <?php echo $_SESSION['ParentNameError'];
+                                unset($_SESSION['ParentNameError'], $_SESSION['inputStdParentName']) ?>
+                            </label>
                         </div>
 
                         <!-- Contact faculty & Phone -->

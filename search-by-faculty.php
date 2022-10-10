@@ -1,8 +1,7 @@
 <?php
 include "./php/header.php";
-// echo $_SERVER['HTTP_REFERER']; 
 
-if (!isset($_POST['submitBtn']) && ($_SESSION['isDeleted'] != "yes") && $_SESSION['isUpdated'] != "yes") {
+if (!isset($_GET['submitBtn']) && ($_SESSION['isDeleted'] != "yes") && $_SESSION['isUpdated'] != "yes") {
     header(URL . "php/view-student.php");
 } else {
 ?>
@@ -34,16 +33,22 @@ if (!isset($_POST['submitBtn']) && ($_SESSION['isDeleted'] != "yes") && $_SESSIO
                 <a href="<?php echo URL ?>php/view-student.php"><button class="backBtn"></button></a>
                 <?php
 
-                $faculty_id = $_POST['std_faculty'];
-                $batch = $_POST['batch'];
+                // $faculty_id = $_POST['std_faculty'];
+                // $batch = $_POST['batch'];
 
-                if ($faculty_id == "" && $batch == "") {
-                    $faculty_id = $_SESSION['f_id'];
-                    $batch = $_SESSION['batch'];
-                } else {
-                    $_SESSION['f_id'] = $faculty_id;
-                    $_SESSION['batch'] = $batch;
-                }
+                $faculty_id = $_GET['std_faculty'];
+                $batch = $_GET['batch'];
+
+                // echo "faculty id ==> $faculty_id <br>";
+                // echo "batch id ==> $batch <br>";
+
+                // if ($faculty_id == "" && $batch == "") {
+                //     $faculty_id = $_SESSION['f_id'];
+                //     $batch = $_SESSION['batch'];
+                // } else {
+                //     $_SESSION['f_id'] = $faculty_id;
+                //     $_SESSION['batch'] = $batch;
+                // }
 
                 $sql_1 = "SELECT * FROM faculty WHERE faculty_id = $faculty_id";
                 $res_1 = mysqli_query($conn, $sql_1);
@@ -102,21 +107,26 @@ if (!isset($_POST['submitBtn']) && ($_SESSION['isDeleted'] != "yes") && $_SESSIO
                                 <td class="center"><?php echo $data['batch_name'] ?></td>
                                 <td>
                                     <span class="button">
-                                        <form action="<?php echo URL ?>php/edit-student.php" method="post">
+                                        <!-- sending data using POST method working fine-->
+                                        <!-- <form action="<?php echo URL ?>php/edit-student.php" method="post">
                                             <input type="text" name="edit_id" value="<?php echo $data['std_id'] ?>" style="visibility: hidden; display:none;">
                                             <input type="submit" class="editBtn" value="Edit" name="edit">
-                                        </form>
+                                        </form> -->
 
-                                        <!-- <a href="<?php echo URL . "php/edit.php?edit_id=" . md5($data['std_id']) ?>" class="editBtn">Edit</a> -->
+                                        <!-- <form action="<?php echo URL ?>php/edit-student.php">
+                                            <input type="text" name="edit_id" value="<?php echo base64_encode($data['std_id']) ?>" style="visibility: hidden; display:none;">
+                                            <input type="submit" class="editBtn" value="Edit" name="edit">
+                                        </form> -->
 
-                                        <!-- <a href="#" class="deleteBtn">Delete</a> -->
+                                        <!-- sending data using GET method working fine-->
+                                        <a href="<?php echo URL . "php/edit-student.php?edit_id=" . base64_encode($data['std_id']) . "&edit=Edit" ?>" class="editBtn">Edit</a>
 
-                                        <form action="<?php echo URL . 'php/delete.php' ?>" method="post">
+                                        <!-- <form action="<?php echo URL . 'php/delete.php' ?>" method="post">
                                             <input type="text" name="delete_id" value="<?php echo $data['std_id'] ?>" style="visibility: hidden; display:none;">
                                             <input type="submit" value="Delete" class="deleteBtn" name="deleteBtn" onClick="return confirm('Are you sure want to delete?')">
-                                        </form>
+                                        </form> -->
 
-                                        <!-- <a href="<?php echo URL . "php/delete.php?delete_id=" . md5($data['std_id']) ?>" class="deleteBtn">Delete</a> -->
+                                        <a href="<?php echo URL . 'php/delete.php?delete_id=' . base64_encode($data['std_id']) . '&deleteBtn=Delete' ?>" onclick="return confirm('Are you sure want to delete ?')" class="deleteBtn">Delete</a>
                                     </span>
                                 </td>
                             </tr>
