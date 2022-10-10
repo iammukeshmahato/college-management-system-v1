@@ -3,7 +3,6 @@ include("./header.php");
 include("./validate.php");
 
 if (isset($_POST['submitBtn'])) {
-    // echo "btn set";
     $name = validate_script(mysqli_real_escape_string($conn, $_POST['std_name']));
     $add = validate_script(mysqli_real_escape_string($conn, $_POST['std_address']));
     $gender = validate_script(mysqli_real_escape_string($conn, $_POST['std_gender']));
@@ -24,19 +23,17 @@ if (isset($_POST['submitBtn'])) {
     // }
     //  $hash = generateHash();
 
-    echo '$name = ' . $name . " type = " . gettype($name) . "<br>";
-    echo '$add = ' . $add . " type = " . gettype($add) . "<br>";
-    echo '$gender = ' . $gender . " type = " . gettype($gender) . "<br>";
-    echo '$faculty = ' . $faculty . " type = " . gettype($faculty) . "<br>";
-    echo '$Parent\'s Name = ' . $parentsName . " type = " . gettype($parentsName) . "<br>";
-    // echo '$email = ' . $email . " type = " . gettype($email) . "<br>";
-    echo '$phone = ' . $phone . " type = " . gettype($phone) . "<br>";
-    echo '$dob = ' . $dob . " type = " . gettype($dob) . "<br>";
-    echo '$yoj = ' . $yoj . " type = " . gettype($yoj) . "<br>";
+    // echo '$name = ' . $name . " type = " . gettype($name) . "<br>";
+    // echo '$add = ' . $add . " type = " . gettype($add) . "<br>";
+    // echo '$gender = ' . $gender . " type = " . gettype($gender) . "<br>";
+    // echo '$faculty = ' . $faculty . " type = " . gettype($faculty) . "<br>";
+    // echo '$Parent\'s Name = ' . $parentsName . " type = " . gettype($parentsName) . "<br>";
+    // // echo '$email = ' . $email . " type = " . gettype($email) . "<br>";
+    // echo '$phone = ' . $phone . " type = " . gettype($phone) . "<br>";
+    // echo '$dob = ' . $dob . " type = " . gettype($dob) . "<br>";
+    // echo '$yoj = ' . $yoj . " type = " . gettype($yoj) . "<br>";
 
 
-    // echo "line 48";
-    // print_r($conn);
     $faculty_short = (mysqli_fetch_assoc(mysqli_query($conn, "SELECT faculty_short FROM faculty WHERE faculty_id = $faculty")))['faculty_short'];
     // echo $faculty_short;
     $batch_name = (mysqli_fetch_assoc(mysqli_query($conn, "SELECT batch_name FROM batch WHERE batch_id = $yoj")))['batch_name'];
@@ -74,11 +71,8 @@ if (isset($_POST['submitBtn'])) {
     $_SESSION['inputStdDOB'] = $dob;
     $_SESSION['inputStdYOJ'] = $yoj;
 
-    // echo "mmk => ". $_SESSION['inputStdGender'];
-    // $isValidPhone = validate_phone("9812345678");
-
     if (!$isValidName || !$isValidParentName || !$isValidPhone) {
-        echo "Invalid";
+        // echo "Invalid";
         header("location: " . URL . "php/add-student.php");
     } else {
         // echo "everytihing is OK to upload";
