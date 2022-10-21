@@ -104,12 +104,12 @@ include "./header.php";
 
                         <div class="form-item">
                             <p class="title">Gender</p>
-                            <input type="radio" class="radio" name="gender" value="Male" required <?php if ($_SESSION['inputTeacherGender'] && $_SESSION['inputTeacherGender'] == "Male") echo "checked";
-                                                                                                    unset($_SESSION['inputTeacherGender']); ?>><span>Male</span>
-                            <input type="radio" class="radio" name="gender" value="Female" required <?php if ($_SESSION['inputTeacherGender'] && $_SESSION['inputTeacherGender'] == "Female") echo "checked";
-                                                                                                    unset($_SESSION['inputTeacherGender']); ?>><span>Female</span>
-                            <input type="radio" class="radio" name="gender" value="Other" required <?php if ($_SESSION['inputTeacherGender'] && $_SESSION['inputTeacherGender'] == "Other") echo "checked";
-                                                                                                    unset($_SESSION['inputTeacherGender']); ?>><span>Other</span>
+                            <input type="radio" class="radio" name="gender" value="Male" required <?php if ($_SESSION['inputTeacherGender'] && $_SESSION['inputTeacherGender'] == "Male"){echo "checked";
+                                                                                                    unset($_SESSION['inputTeacherGender']);} ?>><span>Male</span>
+                            <input type="radio" class="radio" name="gender" value="Female" required <?php if ($_SESSION['inputTeacherGender'] && $_SESSION['inputTeacherGender'] == "Female"){ echo "checked";
+                                                                                                    unset($_SESSION['inputTeacherGender']);} ?>><span>Female</span>
+                            <input type="radio" class="radio" name="gender" value="Other" required <?php if ($_SESSION['inputTeacherGender'] && $_SESSION['inputTeacherGender'] == "Other"){ echo "checked";
+                                                                                                    unset($_SESSION['inputTeacherGender']);} ?>><span>Other</span>
                         </div>
 
                         <div class="form-item">
