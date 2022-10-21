@@ -1,5 +1,9 @@
 <?php
 include "./header.php";
+include "./validate.php";
+if(isset($_GET['searchText'])){
+    $searchText = validate_script(mysqli_real_escape_string($conn, $_GET['searchText']));
+}
 ?>
 
 
@@ -112,9 +116,9 @@ include "./header.php";
             </div> -->
 
             <!-- showing result div for get method -->
-            <div class="ShowingResultTitle" style="display: <?php if (($_GET['searchText'] == "") || $_GET['searchText'] == " ") echo "none;" ?>">
+            <div class="ShowingResultTitle" style="display: <?php if (($searchText == "") || $searchText == " ") echo "none;" ?>">
                 <a href="<?php echo URL ?>php/view-teacher.php"><button class="backBtn"></button></a>
-                Showing results for "<?php echo $_GET['searchText'] ?>".
+                Showing results for "<?php echo $searchText ?>".
             </div>
 
             <!-- main search box -->
@@ -158,8 +162,7 @@ include "./header.php";
                     // if (isset($_POST['searchBtn'])) {
                     if (isset($_GET['searchText'])) {
                         // $searchText = mysqli_escape_string($conn, $_POST['searchText']);
-                        $searchText = mysqli_escape_string($conn, $_GET['searchText']);
-
+                        // $searchText = validate_script(mysqli_real_escape_string($conn, $_GET['searchText']));
                         $sql = "SELECT * FROM teachers WHERE t_name like '$searchText%'";
                         // $sql = "SELECT * FROM teachers WHERE t_name like '%$searchText%' ORDER BY t_name ASC";
                         // $_POST['searchText'] = " ";
@@ -184,15 +187,19 @@ include "./header.php";
 
                                 <td>
                                     <span class="button">
-                                        <form action="<?php echo URL ?>php/edit-teacher-form.php" method="post">
-                                            <input type="text" name="edit_id" value="<?php echo $data['t_id'] ?>" style="visibility: hidden; display:none;">
+                                        <a href="<?php echo URL . "php/edit-teacher-form.php?edit_id=" . base64_encode(base64_encode($data['t_id']));?>" class="editBtn">Edit</a>
+                                        <a href="<?php echo URL . "php/delete-teacher.php?delete_id=" . base64_encode(base64_encode($data['t_id']));?>" class="deleteBtn">Delete</a>
+                                        
+                                        <!-- <a href="<?php echo URL . "php/edit-teacher-form.php?edit_id=" . base64_encode($data['t_id']);?>" class="editBtn">Edit</a> -->
+                                        <!-- <form action="<?php echo URL ?>php/edit-teacher-form.php" method="">
+                                            <input type="text" name="edit_id" value="<?php echo base64_encode($data['t_id']) ?>" style="visibility: hidden; display:none;">
                                             <input type="submit" class="editBtn" value="Edit" name="edit">
-                                        </form>
+                                        </form> -->
 
-                                        <form action="<?php echo URL ?>php/delete-teacher.php" method="post">
+                                        <!-- <form action="<?php echo URL ?>php/delete-teacher.php" method="post">
                                             <input type="text" name="delete_id" value="<?php echo $data['t_id'] ?>" style="visibility: hidden; display:none;">
                                             <input type="submit" value="Delete" class="deleteBtn" name="deleteBtn" onClick="return confirm('Are you sure want to delete?')">
-                                        </form>
+                                        </form> -->
                                     </span>
                                 </td>
                             </tr>
