@@ -11,7 +11,7 @@ include("./php/header.php")
     <title>Setting</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- <link rel="stylesheet" href="mystyle.css"> -->
+    <link rel="stylesheet" href="./css/edit-profile.css">
 </head>
 
 <body>
@@ -64,10 +64,26 @@ include("./php/header.php")
                 <h1 class="main-title">College Management System | Edit Profile</h1>
             </div>
 
-            <div class="" style="display:flex; justify-content:center; align-items:center; height:calc(100% - 90px)">
-                <h1>Comming Soon!!!</h1>
+            <!-- profile section -->
+            <div class="edit-profile-sec">
+                <div class="profile-pic">
+                    <img src="<?php echo URL . "pp/" . $_SESSION['logged_user_pp'] ?>" id="avtar">
+
+                    <div class="upload-image">
+                        <form action="#" method="post" enctype="multipart/form-data" id="imageUploadForm">
+                            <label for="uploadImage">
+                                <img src="./img/editt.png" alt="">
+                            </label>
+                            <input type="file" id="uploadImage" style="display: none" name="ProfileImage" accept="image/png,image/gif,image/jpeg,image/jpg">
+                        </form>
+                    </div>
+
+                    <label id="pp-error" for="uploadImage">Only JPG and PNG file supported</label>
+                </div>
             </div>
         </div>
+
+        <script src="./js/uploadImage.js"></script>
 </body>
 
 </html>
