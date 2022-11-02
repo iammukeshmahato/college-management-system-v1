@@ -5,8 +5,8 @@ function validate_name($sessionName, $name)
 {
     if (!empty($name)) {
         $_SESSION[$sessionName] = $name;
-        if (!preg_match("/^[A-Z a-z]+$/", $name)) {
-            $_SESSION['nameError'] = "Invalid Name, Only Alphabets are allowed.";
+        if (!preg_match("/^[A-Z a-z]{3,30}$/", $name)) {
+            $_SESSION['nameError'] = "Invalid Name, Only Alphabets are allowed. should be 3 letters long or more.";
             return false;
         } else {
             return true;
@@ -49,22 +49,6 @@ function validate_email($sessionName, $email)
     }
 }
 
-//work remaining not finished yet
-// function validate_address($address){
-//     if (!empty($address)) {
-//         if (!preg_match("/^[A-Z a-z]+$/", $address)) {
-//             $_SESSION['addressError'] = "Invalid Address, Can't start with symbols";
-//             $_SESSION['inputStdAddress'] = $address;
-//             return false;
-//         } else {
-//             return true;
-//         }
-//     } else {
-//         $_SESSION['addressError'] = "Address can't be empty";
-//         return false;
-//     }
-// }
-
 
 function validate_phone($sessionName, $phone)
 {
@@ -85,21 +69,6 @@ function validate_phone($sessionName, $phone)
 function validate_script($input)
 {
     if (!empty($input)) {
-
-        // if (preg_match("/<script>/", $input)) {
-        //     $checked = preg_replace("/<script>/", "", $input);
-        //     // return preg_replace("/<script>/", "", $input);
-        // } elseif (preg_match("/<\/script>/", $input)) {
-        //     return preg_replace("/<\/script>/", "", $input);
-        // } elseif (preg_match("/</", $input)) {
-        //     return preg_replace("/</", "", $input);
-        // } elseif (preg_match("/>/", $input)) {
-        //     return preg_replace("/>/", "", $input);
-        // } else {
-        //     return $input;
-        // }
-
-
         if (!preg_match("/<script>/", $input) && !preg_match("/</", $input)) {
             return $input;
         } else {
