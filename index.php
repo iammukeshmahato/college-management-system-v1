@@ -1,4 +1,9 @@
-<?php session_start(); ?>
+<?php
+  session_start(); 
+  if(isset($_SESSION['logged_user_name'])){
+    header("location: ./php/home.php");
+  }
+?>
 
 <!DOCTYPE html>
 <html lang="en">
