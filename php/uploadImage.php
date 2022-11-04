@@ -22,16 +22,13 @@ if ($type != "jpg" && $type != "jpeg" && $type != "gif" && $type != "png") {
 }
 
 if ($canUpload) {
-    if (file_exists($name)) {
-        echo "OK";
-        $_SESSION['logged_user_pp'] = $_FILES['ProfileImage']['name'];
-    } else if (move_uploaded_file($tmp_name, $name)) {
+    if ((file_exists($name)) || move_uploaded_file($tmp_name, $name)) {
 
         // updating image id into the database
 
         $id = $_SESSION['logged_user_id'];
         $imgName = $_FILES['ProfileImage']['name'];
-        $sql = "UPDATE `Admin_list` SET `image_id` = '$imgName' where id = $id";
+        $sql = "UPDATE `Admin_list` SET `image_id` = '$imgName' WHERE id = $id";
         $res = mysqli_query($conn, $sql);
 
         if ($res) {
