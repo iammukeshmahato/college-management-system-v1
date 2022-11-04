@@ -12,6 +12,36 @@ include("./php/header.php")
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="./css/edit-profile.css">
+    <style>
+        .form-container {
+            padding: 1rem 1rem;
+        }
+
+        .form-item {
+            margin-bottom: .5rem;
+            position: relative;
+        }
+
+        .form-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .title {
+            width: 8rem;
+        }
+
+        b>span {
+            height: 32px;
+            width: 32px;
+            POSITION: ABSOLUTE;
+            RIGHT: 0.75rem;
+            top: 12px;
+            padding: 0;
+            background-image: url("./img/editt.png");
+            background-size: cover;
+            cursor: pointer;
+        }
+    </style>
 </head>
 
 <body>
@@ -80,10 +110,99 @@ include("./php/header.php")
 
                     <label id="pp-error" for="uploadImage">Only JPG and PNG file supported</label>
                 </div>
+
+                <div class="ac-info">
+                    <div class="info-sec">
+                        <h3 class="info-title">Account Information</h3>
+
+                        <div class="form-container" style="margin-left:0rem; box-shadow: none;">
+                            <form>
+                                <!-- Name -->
+                                <div class="form-item">
+                                    <div class="flex">
+                                        <p class="title" style="margin-bottom:0;">Full Name:</p>
+                                        <b class="input" id="updateName">
+                                            <!-- populating logged user name  -->
+                                            <?php echo $_SESSION['logged_user_name'] ?>
+                                            <!-- edit Btn -->
+                                            <span id="editName" onclick="nameEditBtnClick()"></span>
+                                        </b>
+                                    </div>
+                                </div>
+
+                                <!-- username -->
+                                <div class="form-item" style="margin-bottom: 0;">
+                                    <div class="flex">
+                                        <p class="title" style="margin-bottom:0;">Username:</p>
+                                        <b class="input" id="updateUsername">
+                                            <?php
+                                            $id = $_SESSION['logged_user_id'];
+
+                                            // $sql = "SELECT username FROM Admin_list WHERE id = $id";
+                                            // $res = mysqli_query($conn,$sql);
+                                            // $data = mysqli_fetch_assoc($res);
+                                            // $username = $data['username'];
+                                            // echo $username;
+
+                                            $username = mysqli_fetch_assoc(mysqli_query($conn, "SELECT username FROM Admin_list WHERE id = $id"))['username'];
+                                            echo $username;
+                                            ?>
+                                            <!-- edit Btn -->
+                                            <span id="editName" onclick="usernameEditBtnClick()"></span>
+                                        </b>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Popup message -->
+            <div class="popup-wrapper">
+                <div class="popup-name">
+                    <div class="form-container" style="margin-left:0rem; box-shadow: none;">
+                        <form id="nameForm" method="POST">
+                            <div class="form-item">
+                                <p class="title">Full Name:</p>
+                                <input type="text" class="input" id="admin_name" required placeholder="Enter Your Full Name" autocomplete="off" name="admin_name" value="<?php echo $_SESSION['logged_user_name']; ?>">
+                                <label for="fullnameSend" class="errorMsg invalid" id="nameErrorMsg">
+                                    <!-- Error messages will be shown here -->
+                                </label>
+                            </div>
+                            <div class="ac-info-submit">
+                                <input type="button" value="Cancel" name="submitBtn" id="submitBtn" class="button input" style="width: 4rem; height:2rem; margin-right:1rem;" onclick="cancelForm('popup-name')">
+                                <input type="submit" id="nameSubmitBtn" class="button input" style="width: 4rem; height:2rem;">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="popup-username">
+                    <div class="form-container" style="margin-left:0rem; box-shadow: none;">
+                        <form id="usernameForm" method="POST">
+                            <div class="form-item">
+                                <p class="title">Username:</p>
+                                <input type="text" class="input" id="admin_username" name="admin_username" required placeholder="Enter your username" autocomplete="off" value="<?php echo $username; ?>">
+                                <label for="emailSend" class="errorMsg invalid" id="usernameErrorMsg">
+                                    <!-- Error messages will be shown here -->
+                                </label>
+                            </div>
+                            <div class="ac-info-submit">
+                                <input type="button" value="Cancel" class="button input" style="width: 4rem; height:2rem; margin-right:1rem;" onclick="cancelForm('popup-username')">
+                                <input type="submit" value="Submit" name="submitBtn" id="usernameSubmitBtn" class="button input" style="width: 4rem; height:2rem;">
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </div>
         </div>
+    </div>
 
-        <script src="./js/uploadImage.js"></script>
+    <script src="./js/edit-profile.js"></script>
+    <script src="./js/uploadImage.js"></script>
 </body>
 
 </html>
