@@ -23,6 +23,7 @@ imageInput.addEventListener("change", function () {
                 if (xhr.responseText === "OK") {
                     profilePicError.style.visibility = "hidden";
                     img[1].style = "border:2px solid; border-color:#00c300;";
+                    location.reload();
                 } else {
                     profilePicError.innerHTML = xhr.responseText;
                     img[1].style = "border-color:red";
