@@ -6,7 +6,7 @@ function validate_name($sessionName, $name)
     if (!empty($name)) {
         $_SESSION[$sessionName] = $name;
         if (!preg_match("/^[A-Z a-z]{3,30}$/", $name)) {
-            $_SESSION['nameError'] = "Invalid Name, Only Alphabets are allowed. should be 3 letters long or more.";
+            $_SESSION['nameError'] = "Invalid Name, Only Alphabets are allowed. should be minimum of 3 letters and maximum of 30 letters long.";
             return false;
         } else {
             return true;
