@@ -17,6 +17,22 @@ function validate_name($sessionName, $name)
     }
 }
 
+function validate_username($sessionName, $name)
+{
+    if (!empty($name)) {
+        $_SESSION[$sessionName] = $name;
+        if (!preg_match("/^[A-Za-z0-9]{3,30}$/", $name)) {
+            $_SESSION['usernameError'] = "Invalid username, Only Alphabets & digits are allowed. should be minimum of 3 charecter and maximum of 30 character long.";
+            return false;
+        } else {
+            return true;
+        }
+    } else {
+        $_SESSION['usernameError'] = "Name can't be empty";
+        return false;
+    }
+}
+
 function validate_ParentName($sessionName, $name)
 {
     if (!empty($name)) {
