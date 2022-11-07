@@ -125,7 +125,7 @@ include("./php/header.php")
                                             <!-- populating logged user name  -->
                                             <?php echo $_SESSION['logged_user_name'] ?>
                                             <!-- edit Btn -->
-                                            <span id="editName" onclick="nameEditBtnClick()"></span>
+                                            <!-- <span id="editName" onclick="nameEditBtnClick()"></span> -->
                                         </b>
                                     </div>
                                 </div>
@@ -148,7 +148,7 @@ include("./php/header.php")
                                             echo $username;
                                             ?>
                                             <!-- edit Btn -->
-                                            <span id="editName" onclick="usernameEditBtnClick()"></span>
+                                            <!-- <span id="editName" onclick="usernameEditBtnClick()"></span> -->
                                         </b>
                                     </div>
                                 </div>
