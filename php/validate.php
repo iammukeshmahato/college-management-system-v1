@@ -96,3 +96,20 @@ function validate_script($input)
         }
     }
 }
+
+function validate_regno($sessionName, $name)
+{
+    if (!empty($name)) {
+        $_SESSION[$sessionName] = $name;
+        $regEx = "/^(((DIT)|(DGE)|(DEE)|(DHM)|(DCE)){1}\-[0-9]{4}\-[0-9]{3})$/";
+        if (!preg_match($regEx, $name)) {
+            $_SESSION['regError'] = "Invalid Registration Number, Should be in format: faculty-yearOfJoining-id. Eg: DIT-2076-001";
+            return false;
+        } else {
+            return true;
+        }
+    } else {
+        $_SESSION['regError'] = "Registration Number can't be empty";
+        return false;
+    }
+}
