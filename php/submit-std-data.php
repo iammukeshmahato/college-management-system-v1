@@ -3,6 +3,7 @@ include("./header.php");
 include("./validate.php");
 
 if (isset($_POST['submitBtn'])) {
+    $regno = validate_script(mysqli_real_escape_string($conn, $_POST['std_regno']));
     $name = validate_script(mysqli_real_escape_string($conn, $_POST['std_name']));
     $add = validate_script(mysqli_real_escape_string($conn, $_POST['std_address']));
     $gender = validate_script(mysqli_real_escape_string($conn, $_POST['std_gender']));
@@ -23,6 +24,7 @@ if (isset($_POST['submitBtn'])) {
     // }
     //  $hash = generateHash();
 
+    // echo '$regno = ' . $regno . " type = " . gettype($regno) . "<br>";
     // echo '$name = ' . $name . " type = " . gettype($name) . "<br>";
     // echo '$add = ' . $add . " type = " . gettype($add) . "<br>";
     // echo '$gender = ' . $gender . " type = " . gettype($gender) . "<br>";
@@ -34,32 +36,73 @@ if (isset($_POST['submitBtn'])) {
     // echo '$yoj = ' . $yoj . " type = " . gettype($yoj) . "<br>";
 
 
-    $faculty_short = (mysqli_fetch_assoc(mysqli_query($conn, "SELECT faculty_short FROM faculty WHERE faculty_id = $faculty")))['faculty_short'];
-    // echo $faculty_short;
-    $batch_name = (mysqli_fetch_assoc(mysqli_query($conn, "SELECT batch_name FROM batch WHERE batch_id = $yoj")))['batch_name'];
+    // validating user inputed registration number
 
-    // $last_id = (mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM students INNER JOIN faculty on students.faculty_id = faculty.faculty_id LEFT JOIN batch on students.yoj = batch.batch_id WHERE faculty.faculty_id = $faculty AND batch.batch_id = $yoj")))['std_id'];
-
-    $fetch_id_res = mysqli_query($conn, "SELECT * FROM students INNER JOIN faculty on students.faculty_id = faculty.faculty_id LEFT JOIN batch on students.yoj = batch.batch_id WHERE faculty.faculty_id = $faculty AND batch.batch_id = $yoj ORDER by students.std_id DESC");
-    $last_id = intval(substr((mysqli_fetch_assoc($fetch_id_res))['std_id'], -3));
-    $last_id++;
-
-    if (mysqli_num_rows($fetch_id_res) > 0) {
-        if ($last_id < 100) {
-            if ($last_id < 10) {
-                $increment = "00" . $last_id;
-            } else {
-                $increment = "0" . $last_id;
-            }
-        } else {
-            $increment = $i;
+    $isValidReg = validate_regno("inputStdReg", $regno);
+    // echo $regno;
+    $splitedREG = explode("-", $regno);
+    $fac_id = $splitedREG[1];
+    $Input_id = $splitedREG[2];
+    $isMatched = false;
+    $res = mysqli_query($conn, "SELECT `batch_name` FROM `batch`");
+    while ($faculty_arr = mysqli_fetch_assoc($res)) {
+        // print_r($faculty_arr['batch_name'] . "<br>");
+        if ($fac_id == $faculty_arr['batch_name']) {
+            // echo "faculty id matched";
+            $isMatched = true;
+            break;
         }
-    } else {
-        $increment = "001";
+    }
+    $isMatched = $isMatched ? true : false;
+    if ($isValidReg) {
+        if (!$isMatched) {
+            $_SESSION['regError'] = "Invalid Registration Number, '$fac_id' is not a joining year";
+            $isValidReg = false;
+            // echo $_SESSION['regError'];
+        }
+        $id = $regno;
+
+        // checking if the same id already exist;
+        // echo "line 71<br>";
+        $getId = mysqli_query($conn, "SELECT * FROM `students` WHERE `std_id` = '$id'");
+        $isAlreadyExit = mysqli_num_rows($getId) > 0 ? true : false;
+
+        if ($isAlreadyExit) {
+            $_SESSION['regError'] = "Registration Number '$regno' already exist.";
+            $isValidReg = false;
+            // echo $_SESSION['regError'];
+        }
     }
 
-    $id = "$faculty_short-$batch_name-$increment";
-    // echo $id;
+    // // Generating Registration Number;
+    // $faculty_short = (mysqli_fetch_assoc(mysqli_query($conn, "SELECT faculty_short FROM faculty WHERE faculty_id = $faculty")))['faculty_short'];
+    // // echo $faculty_short;
+    // $batch_name = (mysqli_fetch_assoc(mysqli_query($conn, "SELECT batch_name FROM batch WHERE batch_id = $yoj")))['batch_name'];
+
+    // // $last_id = (mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM students INNER JOIN faculty on students.faculty_id = faculty.faculty_id LEFT JOIN batch on students.yoj = batch.batch_id WHERE faculty.faculty_id = $faculty AND batch.batch_id = $yoj")))['std_id'];
+
+    // $fetch_id_res = mysqli_query($conn, "SELECT * FROM students INNER JOIN faculty on students.faculty_id = faculty.faculty_id LEFT JOIN batch on students.yoj = batch.batch_id WHERE faculty.faculty_id = $faculty AND batch.batch_id = $yoj ORDER by students.std_id DESC");
+    // $last_id = intval(substr((mysqli_fetch_assoc($fetch_id_res))['std_id'], -3));
+    // $last_id++;
+
+    // if (mysqli_num_rows($fetch_id_res) > 0) {
+    //     if ($last_id < 100) {
+    //         if ($last_id < 10) {
+    //             $increment = "00" . $last_id;
+    //         } else {
+    //             $increment = "0" . $last_id;
+    //         }
+    //     } else {
+    //         $increment = $i;
+    //     }
+    // } else {
+    //     $increment = "001";
+    // }
+
+    // $id = "$faculty_short-$batch_name-$increment";
+    // // echo $id;
+
+
 
     //validating
     $isValidName = validate_name("inputStdName", $name);
@@ -71,7 +114,12 @@ if (isset($_POST['submitBtn'])) {
     $_SESSION['inputStdDOB'] = $dob;
     $_SESSION['inputStdYOJ'] = $yoj;
 
-    if (!$isValidName || !$isValidParentName || !$isValidPhone) {
+
+    if (!$isValidName || !$isValidParentName || !$isValidPhone || !$isValidReg) {
+        // var_dump($isValidName);
+        // var_dump($isValidParentName);
+        // var_dump($isValidPhone);
+        // var_dump($isValidReg);
         // echo "Invalid";
         header("location: " . URL . "php/add-student.php");
     } else {
@@ -94,7 +142,8 @@ if (isset($_POST['submitBtn'])) {
                 $_SESSION['inputStdGender'],
                 $_SESSION['inputStdFaculty'],
                 $_SESSION['inputStdDOB'],
-                $_SESSION['inputStdYOJ']
+                $_SESSION['inputStdYOJ'],
+                $_SESSION['inputStdReg']
             );
             $_SESSION['isAdded'] = "yes";
             header("location:" . URL . "php/add-student.php");
