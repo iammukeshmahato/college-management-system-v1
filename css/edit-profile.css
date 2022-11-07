@@ -1,0 +1,102 @@
+.edit-profile-sec {
+   padding: 1rem;
+   padding: 0 1rem;
+}
+
+#avtar {
+   height: 120px;
+   width: 120px;
+   object-fit: cover;
+   border: 2px solid rgb(130, 130, 130);
+   padding: 0.125rem;
+   border-radius: 50%;
+}
+
+.upload-image {
+   height: 2rem;
+   width: 2rem;
+   position: absolute;
+   padding: 0.125rem;
+   bottom: 1rem;
+   left: 5.5rem;
+   border: 1px solid #006ea9;
+   border-radius: 50%;
+   background-color: #199be0;
+   cursor: pointer;
+}
+
+.upload-image img {
+   width: 100%;
+   height: 100%;
+   cursor: pointer;
+}
+
+.profile-pic {
+   position: relative;
+}
+
+.ac-info {
+   margin-top: 1rem;
+}
+
+#pp-error {
+   position: absolute;
+   left: 10rem;
+   bottom: 1.25rem;
+   margin-top: 1rem;
+   color: red;
+   visibility: hidden;
+}
+
+/* for form in edit profile section */
+
+.flex {
+   display: flex;
+   align-items: center;
+}
+
+b.input {
+   font-size: 1.125rem;
+   margin-top: 0rem;
+   padding-top: 0.7rem;
+   border: none;
+}
+
+.popup-wrapper {
+   height: 100vh;
+   width: 100vw;
+   position: absolute;
+   background-color: black;
+   top: 0;
+   left: 0;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   /* opacity: .95; */
+   display: none;
+}
+
+.popup-name {
+   display: none;
+}
+
+.popup-username {
+   display: none;
+}
+
+.ac-info-submit {
+   display: flex;
+   justify-content: flex-end;
+}
+
+.display-block {
+   display: block;
+}
+
+.display-none {
+   display: none;
+}
+
+.display-flex {
+   display: flex;
+}
