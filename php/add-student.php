@@ -67,6 +67,16 @@ include "header.php"
                 </div>
                 <form action="submit-std-data.php" method="post">
 
+                    <!-- Reg No. -->
+                    <div class="form-item">
+                        <p class="title">Registration No.</p>
+                        <input type="text" class="input" id="regNo" required placeholder="Eg: DIT-2076-001" autocomplete="off" name="std_regno" value="<?php echo $_SESSION['inputStdReg']; ?>">
+                        <label for="regNo" class="errorMsg invalid" <?php if (isset($_SESSION['regError'])) echo 'style="display:block"'; ?>>
+                            <?php echo $_SESSION['regError'];
+                            unset($_SESSION['regError'], $_SESSION['inputStdReg']) ?>
+                        </label>
+                    </div>
+
                     <!-- Name -->
                     <div class="form-item">
                         <p class="title">Full Name</p>
@@ -152,8 +162,8 @@ include "header.php"
                                 <input type="tel" class="input" id="phoneInput" name="std_phone" placeholder="Must be 10 digits" required autocomplete="off" id="phone" value="<?php echo $_SESSION['inputStdPhone'] ?>">
                                 <label for="phoneInput" class="errorMsg invalid" <?php if (isset($_SESSION['phoneError'])) echo "style='display:block'";
                                                                                     ?>><?php echo $_SESSION['phoneError'];
-                                                                unset($_SESSION['phoneError']);
-                                                                unset($_SESSION['inputStdPhone']); ?></label>
+                                                                                        unset($_SESSION['phoneError']);
+                                                                                        unset($_SESSION['inputStdPhone']); ?></label>
                             </div>
                         </div>
                     </div>
