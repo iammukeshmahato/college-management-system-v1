@@ -100,3 +100,54 @@ b.input {
 .display-flex {
    display: flex;
 }
+
+.hideShowBtn {
+   height: 24px;
+   width: 24px;
+   POSITION: ABSOLUTE;
+   RIGHT: 0.75rem;
+   top: 16px;
+   padding: 0;
+   background-image: url("../img/hide.png");
+   background-size: cover;
+   cursor: pointer;
+}
+
+
+label[for=confirmPassword] {
+   color: red;
+   display: none;
+}
+
+.succss-wrapper {
+   margin: 20px;
+   height: calc(100vh - 40px);
+   width: calc(100vw - 40px);
+   border-radius: 0.5rem;
+   position: absolute;
+   top: 0;
+   left: 0;
+   background-color: rgba(213, 213, 213, 0.757);
+   display: none;
+}
+
+.success {
+   height: 400px;
+   width: 400px;
+
+   position: absolute;
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%, -50%);
+
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   background: #fff;
+   border-radius: 1rem;
+}
+
+.success img {
+   width: 300px;
+}

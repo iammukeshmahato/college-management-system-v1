@@ -107,3 +107,81 @@ function usernameFormOnSumbim() {
         xhr.send(form);
     })
 }
+
+let showHideBtn = document.querySelectorAll(".hideShowBtn");
+let password = document.querySelectorAll(".pass");
+
+// adding click event to all the showhide btn
+showHideBtn.forEach((btn, index) => {
+    btn.addEventListener("click", () => {
+        // console.log(`button ${index} is clicked`);
+        if (password[index].type == "password") {
+            password[index].type = "text";
+            btn.style = `background-image: url("./img/show.png")`;
+        } else {
+            password[index].type = "password";
+            btn.style = `background-image: url("./img/hide.png")`;
+        }
+    })
+})
+
+function checkPassword() {
+    let newPass = document.getElementById("newPassword").value;
+    let cPass = document.getElementById("confirmPassword").value;
+    let cPassError = document.getElementById("cPassErrpr");
+    if (newPass != "" && cPass != "") {
+        if (newPass !== cPass) {
+            cPassError.style.display = "block";
+            cPassError.style.color = "red";
+            cPassError.innerText = "Password does not matched";
+            // console.log("password doesnot maatch");
+        } else {
+            cPassError.style.display = "block";
+            cPassError.innerText = "Password Matched";
+            cPassError.style.color = "green";
+            // console.log("matched");
+        }
+    } else {
+        cPassError.style.display = "none";
+    }
+}
+
+let passwordForm = document.getElementById("changePasswordForm");
+// console.log(PasswordForm);
+passwordForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    // console.log("changePasswordForm submitted");
+
+    let xhr = new XMLHttpRequest();
+    xhr.open("POST", "http://localhost/minor%20project/php/update_admin_password.php", true);
+    xhr.onload = () => {
+        // console.log("loaded");
+        // console.log(xhr.responseText);
+
+        if (xhr.responseText === "updated successfully") {
+            // console.log("password changed successfully");
+            passwordForm.reset();
+            document.getElementById("cPassErrpr").style.display = "none";
+            document.getElementById("currentPassError").style.display = "none";
+
+            document.querySelector(".succss-wrapper").style.display = "block";
+            setTimeout(() => {
+                document.querySelector(".succss-wrapper").style.display = "none";
+            }, 2000);
+
+        } else {
+            // if(xhr.responseText === "not mathced"){
+            // if current password is not matched
+            // console.log("line 163 not matched");
+
+            document.getElementById("currentPassError").style.display = "block";
+
+            // show updated successfully popup
+
+        }
+
+    }
+
+    let formData = new FormData(passwordForm);
+    xhr.send(formData);
+})

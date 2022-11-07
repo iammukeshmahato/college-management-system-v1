@@ -156,6 +156,44 @@ include("./php/header.php")
                         </div>
 
                     </div>
+
+                    <div class="password-sec">
+                        <h3 class="info-title">Change Password</h3>
+                        <div class="form-container" style="margin-left:0rem; box-shadow: none;">
+                            <form method="POST" id="changePasswordForm">
+                                <div class="form-item">
+                                    <div class="flex">
+                                        <p class="title" style="margin-bottom:0; width: 14rem;">Current Password:</p>
+                                        <input type="password" name="currentPassword" id="currentPassword" class="input pass" required>
+                                        <span class="hideShowBtn"></span>
+                                    </div>
+                                    <div style="margin-top: 0.5rem; margin-left: 10rem;">
+                                        <label for="currentPassword" id="currentPassError" style="display: none; color:red;"> Invalid Password: Please enter a valid passwod. </label>
+                                    </div>
+                                </div>
+                                <div class="form-item">
+                                    <div class="flex">
+                                        <p class="title" style="margin-bottom:0; width: 14rem;">New Password:</p>
+                                        <input type="password" name="newPassword" id="newPassword" class="input pass" oninput="checkPassword()" required>
+                                        <span class="hideShowBtn"></span>
+                                    </div>
+                                </div>
+                                <div class="form-item">
+                                    <div class="flex">
+                                        <p class="title" style="margin-bottom:0; width: 14rem;">Re-type Password:</p>
+                                        <input type="password" name="confirmPassword" id="confirmPassword" class="input pass" oninput="checkPassword()" required>
+                                        <span class="hideShowBtn"></span>
+                                    </div>
+                                    <div style="margin-top: 0.5rem; margin-left: 10rem;">
+                                        <label for="confirmPassword" id="cPassErrpr"> Passwords does not matched </label>
+                                    </div>
+                                </div>
+                                <div class="ac-info-submit">
+                                    <input type="submit" value="Submit" name="submitBtn" class="button input" style="width: 4rem; height:2rem;">
+                                </div>
+                            </form>
+                        </div>
+                    </div>
                 </div>
 
             </div>
@@ -196,6 +234,14 @@ include("./php/header.php")
                             </div>
                         </form>
                     </div>
+                </div>
+            </div>
+
+             <!-- success message for password changed -->
+             <div class="succss-wrapper">
+                <div class="success">
+                    <img src="./img/success.gif" alt="success">
+                    <h3>Password Changed successfully</h3>
                 </div>
             </div>
         </div>
