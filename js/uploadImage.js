@@ -9,7 +9,8 @@ imageInput.addEventListener("change", function () {
         const reader = new FileReader(); //FileReader is a predefined function of JS
         reader.addEventListener('load', function () {
 
-            const url = "http://localhost/minor%20project/php/uploadImage.php";
+            // const url = "http://localhost/minor%20project/php/uploadImage.php";
+            const url = `http://${document.location.hostname}/${document.location.pathname.split("/")[1]}/php/uploadImage.php`;
             const xhr = new XMLHttpRequest();
 
             xhr.open("POST", url, true);

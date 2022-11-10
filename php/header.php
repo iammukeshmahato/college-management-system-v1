@@ -1,9 +1,10 @@
 <?php
 session_start();
-define("URL", "http://localhost/minor%20project/");
+// define("URL", "http://localhost/minor%20project/");
+define("URL", "http://localhost/" . explode("/", $_SERVER['PHP_SELF'])[1] . "/");
 include "conn.php";
 if (!isset($_SESSION['logged_user_name'])) {
-    header("location:" .URL ."index.php");
+    header("location:" . URL . "index.php");
 }
 $sql = "SELECT * FROM `Admin_list`";
 $res = mysqli_query($conn, $sql);
