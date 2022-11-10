@@ -1,5 +1,6 @@
 let editNameForm = document.querySelector("#nameForm");
 let editUsernameForm = document.querySelector("#usernameForm");
+const rootURL = `http://${document.location.hostname}/${document.location.pathname.split("/")[1]}/`;
 
 editNameForm.addEventListener("submit", e => e.preventDefault());
 editUsernameForm.addEventListener("submit", e => e.preventDefault());
@@ -40,7 +41,7 @@ function nameFormonSubmit() {
 
     editNameForm.addEventListener("submit", (e) => {
         const xhr = new XMLHttpRequest();
-        xhr.open("POST", "http://localhost/minor%20project/php/update_admin_name.php", true);
+        xhr.open("POST", `${rootURL}php/update_admin_name.php`, true);
 
         xhr.onload = () => {
             if (xhr.status == 200) {
@@ -77,7 +78,7 @@ function usernameFormOnSumbim() {
     document.getElementById("usernameForm").addEventListener("submit", (e) => {
 
         const xhr = new XMLHttpRequest();
-        xhr.open("POST", "http://localhost/minor%20project/php/update_admin_username.php", true);
+        xhr.open("POST", `${rootURL}php/update_admin_username.php`, true);
 
         xhr.onload = () => {
 
@@ -117,10 +118,10 @@ showHideBtn.forEach((btn, index) => {
         // console.log(`button ${index} is clicked`);
         if (password[index].type == "password") {
             password[index].type = "text";
-            btn.style = `background-image: url("./img/show.png")`;
+            btn.style = `background-image: url("${rootURL}/img/show.png")`;
         } else {
             password[index].type = "password";
-            btn.style = `background-image: url("./img/hide.png")`;
+            btn.style = `background-image: url("${rootURL}/img/hide.png")`;
         }
     })
 })
@@ -153,7 +154,7 @@ passwordForm.addEventListener("submit", (e) => {
     // console.log("changePasswordForm submitted");
 
     let xhr = new XMLHttpRequest();
-    xhr.open("POST", "http://localhost/minor%20project/php/update_admin_password.php", true);
+    xhr.open("POST", `${rootURL}php/update_admin_password.php`, true);
     xhr.onload = () => {
         // console.log("loaded");
         // console.log(xhr.responseText);

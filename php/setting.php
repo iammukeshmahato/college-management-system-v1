@@ -37,7 +37,7 @@ include("./header.php")
             RIGHT: 0.75rem;
             top: 12px;
             padding: 0;
-            background-image: url("./img/editt.png");
+            background-image: url("<?php echo URL ?>/img/editt.png");
             background-size: cover;
             cursor: pointer;
         }
@@ -148,7 +148,7 @@ include("./header.php")
                                             echo $username;
                                             ?>
                                             <!-- edit Btn -->
-                                            <!-- <span id="editName" onclick="usernameEditBtnClick()"></span> -->
+                                            <!-- git <span id="editName" onclick="usernameEditBtnClick()"></span> -->
                                         </b>
                                     </div>
                                 </div>
