@@ -1,7 +1,7 @@
 <?php
 include "./header.php";
 include "./validate.php";
-if(isset($_GET['searchText'])){
+if (isset($_GET['searchText'])) {
     $searchText = validate_script(mysqli_real_escape_string($conn, $_GET['searchText']));
 }
 ?>
@@ -52,7 +52,7 @@ if(isset($_GET['searchText'])){
                     <img src="<?php echo URL ?>img/pageview_FILL0_wght400_GRAD0_opsz48.png" id="viewstudent">
                     <p1>Find Student</p1>
                 </a>
-                <a href="<?php echo URL ?>setting.php">
+                <a href="<?php echo URL ?>php/setting.php">
                     <img src="<?php echo URL ?>img/edit.png" id="logout">
                     <p1>Edit Profile</p1>
                 </a>
@@ -187,10 +187,10 @@ if(isset($_GET['searchText'])){
 
                                 <td>
                                     <span class="button">
-                                        <a href="<?php echo URL . "php/edit-teacher-form.php?edit_id=" . base64_encode(base64_encode($data['t_id']));?>" class="editBtn">Edit</a>
-                                        <a href="<?php echo URL . "php/delete-teacher.php?delete_id=" . base64_encode(base64_encode($data['t_id']));?>" class="deleteBtn">Delete</a>
-                                        
-                                        <!-- <a href="<?php echo URL . "php/edit-teacher-form.php?edit_id=" . base64_encode($data['t_id']);?>" class="editBtn">Edit</a> -->
+                                        <a href="<?php echo URL . "php/edit-teacher-form.php?edit_id=" . base64_encode(base64_encode($data['t_id'])); ?>" class="editBtn">Edit</a>
+                                        <a href="<?php echo URL . "php/delete-teacher.php?delete_id=" . base64_encode(base64_encode($data['t_id'])); ?>" class="deleteBtn">Delete</a>
+
+                                        <!-- <a href="<?php echo URL . "php/edit-teacher-form.php?edit_id=" . base64_encode($data['t_id']); ?>" class="editBtn">Edit</a> -->
                                         <!-- <form action="<?php echo URL ?>php/edit-teacher-form.php" method="">
                                             <input type="text" name="edit_id" value="<?php echo base64_encode($data['t_id']) ?>" style="visibility: hidden; display:none;">
                                             <input type="submit" class="editBtn" value="Edit" name="edit">

@@ -47,7 +47,7 @@ include "header.php";
                     <img src="<?php echo URL ?>img/pageview_FILL0_wght400_GRAD0_opsz48.png" id="viewstudent">
                     <p1>Find Student</p1>
                 </a>
-                <a href="<?php echo URL ?>setting.php">
+                <a href="<?php echo URL ?>php/setting.php">
                     <img src="<?php echo URL ?>img/edit.png" id="logout">
                     <p1>Edit Profile</p1>
                 </a>

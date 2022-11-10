@@ -53,7 +53,7 @@ include "./header.php";
                     <img src="<?php echo URL ?>img/pageview_FILL0_wght400_GRAD0_opsz48.png" id="viewstudent">
                     <p1>Find Student</p1>
                 </a>
-                <a href="<?php echo URL ?>setting.php">
+                <a href="<?php echo URL ?>php/setting.php">
                     <img src="<?php echo URL ?>img/edit.png" id="logout">
                     <p1>Edit Profile</p1>
                 </a>
@@ -104,17 +104,24 @@ include "./header.php";
 
                         <div class="form-item">
                             <p class="title">Gender</p>
-                            <input type="radio" class="radio" name="gender" value="Male" required <?php if ($_SESSION['inputTeacherGender'] && $_SESSION['inputTeacherGender'] == "Male"){echo "checked";
-                                                                                                    unset($_SESSION['inputTeacherGender']);} ?>><span>Male</span>
-                            <input type="radio" class="radio" name="gender" value="Female" required <?php if ($_SESSION['inputTeacherGender'] && $_SESSION['inputTeacherGender'] == "Female"){ echo "checked";
-                                                                                                    unset($_SESSION['inputTeacherGender']);} ?>><span>Female</span>
-                            <input type="radio" class="radio" name="gender" value="Other" required <?php if ($_SESSION['inputTeacherGender'] && $_SESSION['inputTeacherGender'] == "Other"){ echo "checked";
-                                                                                                    unset($_SESSION['inputTeacherGender']);} ?>><span>Other</span>
+                            <input type="radio" class="radio" name="gender" value="Male" required <?php if ($_SESSION['inputTeacherGender'] && $_SESSION['inputTeacherGender'] == "Male") {
+                                                                                                        echo "checked";
+                                                                                                        unset($_SESSION['inputTeacherGender']);
+                                                                                                    } ?>><span>Male</span>
+                            <input type="radio" class="radio" name="gender" value="Female" required <?php if ($_SESSION['inputTeacherGender'] && $_SESSION['inputTeacherGender'] == "Female") {
+                                                                                                        echo "checked";
+                                                                                                        unset($_SESSION['inputTeacherGender']);
+                                                                                                    } ?>><span>Female</span>
+                            <input type="radio" class="radio" name="gender" value="Other" required <?php if ($_SESSION['inputTeacherGender'] && $_SESSION['inputTeacherGender'] == "Other") {
+                                                                                                        echo "checked";
+                                                                                                        unset($_SESSION['inputTeacherGender']);
+                                                                                                    } ?>><span>Other</span>
                         </div>
 
                         <div class="form-item">
                             <p class="title">Qualification</p>
-                            <textarea type="text" class="input" name="qualification" required placeholder="Enter Qualification" autocomplete="off" onkeyup="adjustHeight(this)" style="min-height:40px; min-width:100%; max-height: 8rem; max-width: 100%; padding-top: 0.5rem; font-size:14px; padding-bottom: 0.5rem; overflow:auto;"><?php echo $_SESSION['inputTeacherQualification']; unset($_SESSION['inputTeacherQualification']); ?></textarea>
+                            <textarea type="text" class="input" name="qualification" required placeholder="Enter Qualification" autocomplete="off" onkeyup="adjustHeight(this)" style="min-height:40px; min-width:100%; max-height: 8rem; max-width: 100%; padding-top: 0.5rem; font-size:14px; padding-bottom: 0.5rem; overflow:auto;"><?php echo $_SESSION['inputTeacherQualification'];
+                                                                                                                                                                                                                                                                                                                                        unset($_SESSION['inputTeacherQualification']); ?></textarea>
                         </div>
 
                         <div class="form-item">
