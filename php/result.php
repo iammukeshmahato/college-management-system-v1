@@ -113,7 +113,7 @@ if ((!isset($_GET['submitBtn']) || $_GET['userInput'] == "") && !isset($_SESSION
                                         <input type="submit" value="Delete" class="deleteBtn" name="deleteBtn" onClick="return confirm('Are you sure want to delete?')">
                                     </form> -->
 
-                                    <a href="<?php echo URL . 'php/delete.php?delete_id=' . base64_encode($data['std_id']) . '&deleteBtn=Delete' ?>" class="deleteBtn">Delete</a>
+                                    <a onclick="return confirm('Are you sure want to delete ?')" href="<?php echo URL . 'php/delete.php?delete_id=' . base64_encode($data['std_id']) . '&deleteBtn=Delete' ?>" class="deleteBtn">Delete</a>
 
                                 </span>
                             </td>
