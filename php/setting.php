@@ -240,7 +240,7 @@ include("./header.php")
             <!-- success message for password changed -->
             <div class="succss-wrapper">
                 <div class="success">
-                    <img src="./img/success.gif" alt="success">
+                    <img src="<?php echo URL?>img/success.gif" alt="success">
                     <h3>Password Changed successfully</h3>
                 </div>
             </div>
