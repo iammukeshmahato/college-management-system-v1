@@ -46,7 +46,7 @@
 
         <h2>WELCOME</h2>
 
-        <form method="post" action="login.php" id="login-form">
+        <form method="post" action="./php/login.php" id="login-form">
           <div class="user-box">
             <img src="./img/person.png" id="user">
             <input type="text" name="Username" required class="username"/>

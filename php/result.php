@@ -1,6 +1,6 @@
 <?php
-include "./php/header.php";
-include "./php/validate.php";
+include "./header.php";
+include "./validate.php";
 
 if ((!isset($_GET['submitBtn']) || $_GET['userInput'] == "") && !isset($_SESSION['isDeleted']) && !isset($_SESSION['isUpdated'])) {
     header("location: " . URL . "php/view-student.php");

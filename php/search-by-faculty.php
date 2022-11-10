@@ -1,5 +1,5 @@
 <?php
-include "./php/header.php";
+include "./header.php";
 
 if (!isset($_GET['submitBtn']) && ($_SESSION['isDeleted'] != "yes") && $_SESSION['isUpdated'] != "yes") {
     header(URL . "php/view-student.php");

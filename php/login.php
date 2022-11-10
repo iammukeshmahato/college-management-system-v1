@@ -1,6 +1,6 @@
 <?php
 session_start();
-include("./php/conn.php");
+include("./conn.php");
 
 //capturing the user inputs
 $uname = mysqli_real_escape_string($conn, $_POST['Username']);
@@ -21,9 +21,9 @@ if (!isset($submitBtn)) {
         $_SESSION['logged_user_id'] = $data['id'];
         $_SESSION['logged_user_name'] = $data['fullname'];
         $_SESSION['logged_user_pp'] = $data['image_id'];
-        header("location: php/home.php");
+        header("location: ./home.php");
     } else {
         $_SESSION['msg'] = "Sorry, Invalid Username/Password";
-        header("location: index.php");
+        header("location: ../index.php");
     }
 }

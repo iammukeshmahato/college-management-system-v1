@@ -201,12 +201,13 @@ unset($_SESSION['isEditStdDataInvalid']);
                     </div>
 
                     <?php
-                    if (strtok($_SERVER['HTTP_REFERER'], "?") == "http://localhost/minor%20project/search-by-faculty.php") {
+                    // strtok() split the string according to the given sub-string
+                    if (strtok($_SERVER['HTTP_REFERER'], "?") == (URL . "php/search-by-faculty.php")) {
 
                         $_SESSION['byFaculty_url'] = $_SERVER['HTTP_REFERER'];
                     }
 
-                    if (strtok($_SERVER['HTTP_REFERER'], "?") == "http://localhost/minor%20project/result.php") {
+                    if (strtok($_SERVER['HTTP_REFERER'], "?") == (URL . "php/result.php")) {
                         $_SESSION['byName_url'] = $_SERVER['HTTP_REFERER'];
                     }
                     ?>

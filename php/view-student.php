@@ -52,7 +52,7 @@ include("./header.php")
         </div>
 
         <div class="search-wrapper">
-            <form action=" <?php echo URL . 'result.php' ?>" method="">
+            <form action=" <?php echo URL . 'php/result.php' ?>" method="">
                 <div class="individual-student-search-section">
                     <h2>Find a Student</h2>
                     <div class="searchpannel">
@@ -63,7 +63,7 @@ include("./header.php")
             </form>
 
             <div class="searchByFaculty">
-                <form action="<?php echo URL . 'search-by-faculty.php' ?>" method="">
+                <form action="<?php echo URL . 'php/search-by-faculty.php' ?>" method="">
                     <h2 class="search-title">Search By Program And Year</h2>
                     <div class="optionpannel">
                         <div class="department">
