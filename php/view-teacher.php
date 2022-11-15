@@ -188,7 +188,7 @@ if (isset($_GET['searchText'])) {
                                 <td>
                                     <span class="button">
                                         <a href="<?php echo URL . "php/edit-teacher-form.php?edit_id=" . base64_encode(base64_encode($data['t_id'])); ?>" class="editBtn">Edit</a>
-                                        <a href="<?php echo URL . "php/delete-teacher.php?delete_id=" . base64_encode(base64_encode($data['t_id'])); ?>" class="deleteBtn">Delete</a>
+                                        <a onclick="return confirm('Are you sure want to delete ?')" href="<?php echo URL . "php/delete-teacher.php?delete_id=" . base64_encode(base64_encode($data['t_id'])); ?>" class="deleteBtn">Delete</a>
 
                                         <!-- <a href="<?php echo URL . "php/edit-teacher-form.php?edit_id=" . base64_encode($data['t_id']); ?>" class="editBtn">Edit</a> -->
                                         <!-- <form action="<?php echo URL ?>php/edit-teacher-form.php" method="">
