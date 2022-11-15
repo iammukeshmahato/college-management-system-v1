@@ -11,9 +11,9 @@ $res = mysqli_query($conn, $sql);
 
 if ($res) {
     $_SESSION['isDeleted'] = "yes";
-    if (strtok($_SERVER['HTTP_REFERER'], "?") == "http://localhost/minor%20project/result.php") {
+    if (strtok($_SERVER['HTTP_REFERER'], "?") == URL . "php/result.php") {
         header("location: " . $_SERVER['HTTP_REFERER']);
-    } elseif (strtok($_SERVER['HTTP_REFERER'], "?") == "http://localhost/minor%20project/search-by-faculty.php") {
+    } elseif (strtok($_SERVER['HTTP_REFERER'], "?") == URL . "php/search-by-faculty.php") {
         header("location: " . $_SERVER['HTTP_REFERER']);
     } else {
         header("location:" . URL . "php/view-student.php");
