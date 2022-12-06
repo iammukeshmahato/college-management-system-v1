@@ -70,7 +70,7 @@ include "header.php"
                     <!-- Reg No. -->
                     <div class="form-item">
                         <p class="title">Registration No.</p>
-                        <input type="text" class="input" id="regNo" required placeholder="Eg: DIT-2076-001" autocomplete="off" name="std_regno" value="<?php echo $_SESSION['inputStdReg']; ?>">
+                        <input type="text" class="input" id="regNo" required placeholder="Eg: DIT-2076-001" autocomplete="off" name="std_regno" value="<?php if(isset($_SESSION['inputStdReg'])) echo $_SESSION['inputStdReg']; ?>">
                         <label for="regNo" class="errorMsg invalid" <?php if (isset($_SESSION['regError'])) echo 'style="display:block"'; ?>>
                             <?php echo $_SESSION['regError'];
                             unset($_SESSION['regError'], $_SESSION['inputStdReg']) ?>
@@ -80,7 +80,7 @@ include "header.php"
                     <!-- Name -->
                     <div class="form-item">
                         <p class="title">Full Name</p>
-                        <input type="text" class="input" id="fullname" required placeholder="Enter Your Full Name" autocomplete="off" name="std_name" value="<?php echo $_SESSION['inputStdName']; ?>">
+                        <input type="text" class="input" id="fullname" required placeholder="Enter Your Full Name" autocomplete="off" name="std_name" value="<?php if(isset($_SESSION['inputStdName'])) echo $_SESSION['inputStdName']; ?>">
                         <label for="fullname" class="errorMsg invalid" <?php if (isset($_SESSION['nameError'])) echo 'style="display:block"'; ?>>
                             <?php echo $_SESSION['nameError'];
                             unset($_SESSION['nameError'], $_SESSION['inputStdName']) ?>
@@ -115,7 +115,7 @@ include "header.php"
                     <!-- Parent's Name -->
                     <div class="form-item">
                         <p class="title">Parents' Name</p>
-                        <input type="text" class="input" id="parentName" name="parentsName" required placeholder="Enter your father's or mother's name" value="<?php echo $_SESSION['inputStdParentName']; ?>">
+                        <input type="text" class="input" id="parentName" name="parentsName" required placeholder="Enter your father's or mother's name" value="<?php if(isset($_SESSION['inputStdParentName'])) echo $_SESSION['inputStdParentName']; ?>">
                         <label for="parentName" class="errorMsg invalid" <?php if (isset($_SESSION['ParentNameError'])) echo "style='display:block'"; ?>>
                             <?php echo $_SESSION['ParentNameError'];
                             unset($_SESSION['ParentNameError'], $_SESSION['inputStdParentName']) ?>
@@ -159,7 +159,7 @@ include "header.php"
 
                             <div class="phone col-2">
                                 <p class="title">Phone</p>
-                                <input type="tel" class="input" id="phoneInput" name="std_phone" placeholder="Must be 10 digits" required autocomplete="off" id="phone" value="<?php echo $_SESSION['inputStdPhone'] ?>">
+                                <input type="tel" class="input" id="phoneInput" name="std_phone" placeholder="Must be 10 digits" required autocomplete="off" id="phone" value="<?php if(isset($_SESSION['inputStdPhone'])) echo $_SESSION['inputStdPhone'] ?>">
                                 <label for="phoneInput" class="errorMsg invalid" <?php if (isset($_SESSION['phoneError'])) echo "style='display:block'";
                                                                                     ?>><?php echo $_SESSION['phoneError'];
                                                                                         unset($_SESSION['phoneError']);

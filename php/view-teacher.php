@@ -3,6 +3,8 @@ include "./header.php";
 include "./validate.php";
 if (isset($_GET['searchText'])) {
     $searchText = validate_script(mysqli_real_escape_string($conn, $_GET['searchText']));
+}else{
+    $searchText = "";
 }
 ?>
 
