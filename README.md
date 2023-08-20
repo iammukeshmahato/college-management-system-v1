@@ -91,7 +91,7 @@ This is a simple college management system. It is a web based application that a
 
 ## Contributing
 
--  Fork the repo `college-management-system-v1`
+-  Fork the repo [college-management-system-v1](https://github.com/iammukeshmahato/college-management-system-v1)
 -  Commit your changes
 -  Create pull request mentioning comment regarding your changes
 
